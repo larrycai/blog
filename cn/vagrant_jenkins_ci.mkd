@@ -14,5 +14,5 @@
 1. larry的英文博客：http://codeslife.com/2011/10/21/make-ci-easier-with-jenkins-ci-and-vagrant/
 2. stackoverflow的问题讨论：[How to combine Vagrant with Jenkins for the perfect Continuous Integration Environment?][sof-6914547]
 
-[img-vmm]: ../img/vmm.png
+[img-vmm]: ../img/vmm.png?raw=true
 [sof-6941547]: http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173
