@@ -1,17 +1,17 @@
-# ½éÉÜ #
-ÔÚ ¡¶³ÖĞø½»¸¶¡·µÚÊ®Ò»ÕÂ£¨11.7.1£©ÖĞÌáµ½ÁËĞéÄâ»·¾³µÄ¹ÜÀí¡£ÈçÏÂÍ¼
+ï»¿# ä»‹ç» #
+åœ¨ ã€ŠæŒç»­äº¤ä»˜ã€‹ç¬¬åä¸€ç« ï¼ˆ11.7.1ï¼‰ä¸­æåˆ°äº†è™šæ‹Ÿç¯å¢ƒçš„ç®¡ç†ã€‚å¦‚ä¸‹å›¾
 
-![img-vmm][Í¨¹ıĞéÄâ»ú´´½¨ĞéÄâ»·¾³]
+![img-vmm][é€šè¿‡è™šæ‹Ÿæœºåˆ›å»ºè™šæ‹Ÿç¯å¢ƒ]
 
-# ×¼±¸»·¾³ #
+# å‡†å¤‡ç¯å¢ƒ #
 ## vagrant ##
 ## jenkins CI ##
 
-# ×Ü½á #
+# æ€»ç»“ #
 
-#²Î¿¼#
-1. larryµÄÓ¢ÎÄ²©¿Í£ºhttp://codeslife.com/2011/10/21/make-ci-easier-with-jenkins-ci-and-vagrant/
-2. stackoverflowµÄÎÊÌâÌÖÂÛ£º[How to combine Vagrant with Jenkins for the perfect Continuous Integration Environment?][sof-6914547]
+#å‚è€ƒ#
+1. larryçš„è‹±æ–‡åšå®¢ï¼šhttp://codeslife.com/2011/10/21/make-ci-easier-with-jenkins-ci-and-vagrant/
+2. stackoverflowçš„é—®é¢˜è®¨è®ºï¼š[How to combine Vagrant with Jenkins for the perfect Continuous Integration Environment?][sof-6914547]
 
 [img-vmm]: img/vmm.png
 [sof-6941547]: http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173
