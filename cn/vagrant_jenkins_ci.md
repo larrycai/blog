@@ -1,0 +1,17 @@
+# 介绍 #
+在 《持续交付》第十一章（11.7.1）中提到了虚拟环境的管理。如下图
+
+![img-vmm][通过虚拟机创建虚拟环境]
+
+# 准备环境 #
+## vagrant ##
+## jenkins CI ##
+
+# 总结 #
+
+#参考#
+1. larry的英文博客：http://codeslife.com/2011/10/21/make-ci-easier-with-jenkins-ci-and-vagrant/
+2. stackoverflow的问题讨论：[How to combine Vagrant with Jenkins for the perfect Continuous Integration Environment?][sof-6914547]
+
+[img-vmm]: img/vmm.png
+[sof-6941547]: http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173
