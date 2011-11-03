@@ -1,12 +1,12 @@
 #简介#
 虚拟机有很多好处，不仅仅节省硬件资源，而且还可以快速切换系统环境，显然会在软件开发中起到极大作用。
 
-在上一篇中我提到了vagrant这个工具，有点麻烦的是你必须有先要有一个盒子（vagrant box)，盒子是vagrant对virtualbox的虚拟机的进一步封装，自己的虚拟机转变成vagrant的盒子有点麻烦，可以参见[vagrant][vagrant的说明]，因此一般都是找一个现成的来用。
+在上一篇中我提到了vagrant这个工具，有点麻烦的是你必须有先要有一个盒子（vagrant box)，盒子是vagrant对virtualbox的虚拟机的进一步封装，自己的虚拟机转变成vagrant的盒子有点麻烦，可以参见[vagrant的说明][vagrant]，因此一般都是找一个现成的来用。
 
 但又没有更好的办法呢，现在网络的开放精神真是强大，你想到的一般就存在了，它就是我要介绍的[veewee][veewee]，它的功能就是从你的ISO光盘从无到有装出需要的vagrant虚拟机（盒子）。
 
 #veewee使用入门#
-这一块有篇英文文章[vagrantwithveewee][Building Vagrant boxes with veewee]讲的不错，github上的官方网站[veewee][veewee]也是蛮详尽的，我在这儿快速的重复一下，再加上一些技巧。
+这一块有篇英文文章[Building Vagrant boxes with veewee][vagrantwithveewee]讲的不错，github上的官方网站[veewee][veewee]也是蛮详尽的，我在这儿快速的重复一下，再加上一些技巧。
 ## 安装 ##
 首先你当然要vagrant，virtualbox都安装好，veewee实际上是vagrant的一个插件，因此也肯定是ruby写的，安装也很方便（象我这种ruby菜鸟也能完成）。
 
@@ -49,18 +49,19 @@ basebox就是veewee插件装好后变成的vagrant中的一个任务，从结果
 	
 ##原理##
 如果你对操作系统安装（如linux）熟悉的话，应该能很快琢磨出道道来。
-'definition.rb' 中定义了机器启动时如何加载
-`postinstall.sh` 顾名思义就是装完操作系统后的后续工作，这和你的	
+
+ * `definition.rb` 中定义了机器启动时如何加载
+ * `postinstall.sh` 顾名思义就是装完操作系统后的后续工作，这和你的	
 	
 
 
 #总结#
-这篇文章主要简单讲了一下用[veewee][veewee]这个软件来如何快速创建vagrant虚拟机，下次我该来谈谈[puppet][puppet]了，给些建议鼓励鼓励吧 [@larrycai][http://weibo.com/larrycai]，让我持续交付。
+这篇文章主要简单讲了一下用[veewee][veewee]这个软件来如何快速创建vagrant虚拟机，下次我该来谈谈[puppet][puppet]了，给些建议鼓励鼓励吧 [@larrycai][larryweibo]，让我持续交付。
 
 
 #参考#
 1. larry的英文博客：http://codeslife.com/2011/10/25/create-virtualbox-on-fly-using-veewee/
-2. 老外介绍的如何用veewee建立vagrant盒子：[vagrantwithveewee][Building Vagrant boxes with veewee]
+2. 老外介绍的如何用veewee建立vagrant盒子：[Building Vagrant boxes with veewee][vagrantwithveewee]
 
 
 [img-vmm]: ../img/vmm.png?raw=true
@@ -72,3 +73,4 @@ basebox就是veewee插件装好后变成的vagrant中的一个任务，从结果
 [veewee]: http://github.com/jedi4ever/veewee
 [vagrantwithveewee]: http://www.ducea.com/2011/08/15/building-vagrant-boxes-with-veewee/
 [veeweetemplates]: https://github.com/jedi4ever/veewee/tree/master/templates
+[larryweibo]: http://weibo.com/larrycai
