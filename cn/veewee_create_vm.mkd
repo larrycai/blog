@@ -84,7 +84,7 @@ iso文件就是操作系统的安装光盘，建议先从网上下载，veewee�
 	Waiting for the machine to boot
 	....
 
-时间应该蛮长的，一切的OK的话，你就可以产生出
+时间应该蛮长的，一切的OK的话，你就可以产生出vagrant的虚拟机了。
 
 	rdccaiy@ubuntu:~/veewee$ vagrant basebox export 'ubuntu1104'
 	
@@ -95,7 +95,7 @@ iso文件就是操作系统的安装光盘，建议先从网上下载，veewee�
 #veewee的原理#
 如果你对操作系统安装（如linux）熟悉的话，应该能很快琢磨出道道来，veewee调用了[virtualbox的API-VBoxManage][vboxmanage]来控制虚拟机,如构建裸盘（`VBoxManage createhd`）和加载光盘。
 
-现在来看看那三个文件是干嘛的。
+现在再来看看那三个文件是干嘛的。
 
  * `definition.rb` 中是你的一些基本硬件配置，每个模板都差不多，中间一段定义了机器启动时如何加载，注意不同的操作系统会用不同的方法，redhat是kickstart，ubuntu是preseed 
  * `preseed.cfg`中就是ubuntu自动安装的配置参数，如果是SuSE，那就是`autoinst.xml`了，它来完成你的初始光盘安装。
