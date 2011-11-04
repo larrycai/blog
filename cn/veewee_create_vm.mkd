@@ -47,7 +47,7 @@ basebox就是veewee插件装好后变成的vagrant中的一个任务，从结果
 
 如果你要的操作系统模板没找到，可以到[veewee的最新代码中的模板库看看][veeweetemplates]
 	
-##原理##
+#veewee的原理#
 如果你对操作系统安装（如linux）熟悉的话，应该能很快琢磨出道道来。
 
  * `definition.rb` 中定义了机器启动时如何加载
