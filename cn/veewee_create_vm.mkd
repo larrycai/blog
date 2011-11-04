@@ -1,7 +1,7 @@
 #简介#
 虚拟机有很多好处，不仅仅节省硬件资源，而且还可以快速切换系统环境，显然会在软件开发中起到极大作用。
 
-在上一篇中我提到了vagrant这个工具，有点麻烦的是你必须有先要有一个盒子（vagrant box)，盒子是vagrant对virtualbox的虚拟机的进一步封装，自己的虚拟机转变成vagrant的盒子有点麻烦，可以参见[vagrant的说明][vagrant]，因此一般都是找一个现成的来用。
+在[上一篇vagrant和jenkins的文章][vagrant-jenkins]中我提到了vagrant这个工具，有点麻烦的是你必须有先要有一个盒子（vagrant box)，盒子是vagrant对virtualbox的虚拟机的进一步封装，自己的虚拟机转变成vagrant的盒子有点麻烦，可以参见[vagrant的说明][vagrant]，因此一般都是找一个现成的来用。
 
 但又没有更好的办法呢，现在网络的开放精神真是强大，你想到的一般就存在了，它就是我要介绍的[veewee][veewee]，它的功能就是从你的ISO光盘从无到有装出需要的vagrant虚拟机（盒子）。
 
@@ -17,10 +17,21 @@
 
 	rdccaiy@ubuntu:~ $ vagrant basebox templates
 	The following templates are available:
-	vagrant basebox define '' 'archlinux-i686'
+	vagrant basebox define '<boxname>' 'Fedora-14-amd64-netboot'
+	vagrant basebox define '<boxname>' 'ubuntu-10.04.2-server-i386-netboot'
+	vagrant basebox define '<boxname>' 'CentOS-6.0-x86_64-netboot'
+	vagrant basebox define '<boxname>' 'CentOS-4.8-i386'
+	vagrant basebox define '<boxname>' 'Debian-5.0.8-amd64-netboot'
+	vagrant basebox define '<boxname>' 'CentOS-5.6-i386'
+	vagrant basebox define '<boxname>' 'CentOS-5.6-i386-netboot'
+	vagrant basebox define '<boxname>' 'freebsd-8.2-experimental'
+	vagrant basebox define '<boxname>' 'Fedora-15-i386-netboot'
+	vagrant basebox define '<boxname>' 'ubuntu-11.04-server-i386'
+	vagrant basebox define '<boxname>' 'ubuntu-8.04.4-server-amd64'
+	vagrant basebox define '<boxname>' 'archlinux-x86_64'
 	..
 	
-basebox就是veewee插件装好后变成的vagrant中的一个任务，从结果中可以看到已经有好多模板了，怎么用呢，先见一个目录如veewee，然后创一个自己的框架。
+basebox就是veewee插件装好后变成的vagrant中的一个任务，从结果中可以看到已经有好多模板了，怎么用呢，先见一个目录如veewee，然后来创一个自己的机器。
 
     rdccaiy@ubuntu:~$ mkdir veewee ; cd veewee
 	rdccaiy@ubuntu:~/veewee$ vagrant basebox define 'ubuntu1104' 'ubuntu-11.04-server-i386'
@@ -73,8 +84,11 @@ iso文件就是操作系统的安装光盘，建议先从网上下载，veewee�
 	Waiting for the machine to boot
 	....
 
+时间应该蛮长的，一切的OK的话，你就可以产生出
 
-现在你就可以用`vagrant box add ‘ubuntu10’ myubuntu.box`来试验了。
+	rdccaiy@ubuntu:~/veewee$ vagrant basebox export 'ubuntu1104'
+	
+然后就用vagrant的方法去尝试了，如`vagrant box add ‘ubuntu1104’ ubuntu1104.box`。
 
 如果你要的操作系统模板没找到，可以到[veewee的最新代码中的模板库看看][veeweetemplates]
 	
@@ -86,16 +100,18 @@ iso文件就是操作系统的安装光盘，建议先从网上下载，veewee�
  * `definition.rb` 中是你的一些基本硬件配置，每个模板都差不多，中间一段定义了机器启动时如何加载，注意不同的操作系统会用不同的方法，redhat是kickstart，ubuntu是preseed 
  * `preseed.cfg`中就是ubuntu自动安装的配置参数，如果是SuSE，那就是`autoinst.xml`了，它来完成你的初始光盘安装。
  * `postinstall.sh` 顾名思义就是装完操作系统后的后续工作，这和你想要的配置有关，为了vagrant，要加上相应的包，当然别做复杂了，记住你只是做一个操作系统的初始虚拟机，具体里面的东西可以让vagrant用puppet或chef来完成。
-	
+ 	
 #总结#
-这篇文章主要简单讲了一下用[veewee][veewee]这个软件来如何快速创建vagrant虚拟机，下次我该来谈谈[puppet][puppet]了，给些建议鼓励鼓励吧 [@larrycai][larryweibo]，让我持续交付。
+这篇文章主要简单讲了一下用[veewee][veewee]这个软件来如何快速创建vagrant虚拟机，有没有体会到持续交付中反复提到的配置管理了，所有的东西都写成配置文件，然后有软件自动生成你要的东西，慢慢试试在体会吧。 
 
+下次我该来谈谈[puppet][puppet]了，而且是无主机模式的，给些建议鼓励鼓励吧 [@larrycai][larryweibo]，让我持续交付。
 
 #参考#
 1. larry的英文博客：http://codeslife.com/2011/10/25/create-virtualbox-on-fly-using-veewee/
 2. veewee的官网：http://github.com/jedi4ever/veewee
-2. 老外介绍的如何用veewee建立vagrant盒子：[Building Vagrant boxes with veewee][vagrantwithveewee]
-3. VirtualBox API - VBoxManage: https://www.virtualbox.org/manual/ch08.html
+3. 老外介绍的如何用veewee建立vagrant盒子：[Building Vagrant boxes with veewee][vagrantwithveewee]
+4. VirtualBox API - VBoxManage: https://www.virtualbox.org/manual/ch08.html
+5. 持续交付：http://www.continuousdelivery.info/
 
 [img-veewee]: ../img/veewee.png?raw=true
 [vagrant]: http://vagrantup.com/
@@ -105,3 +121,4 @@ iso文件就是操作系统的安装光盘，建议先从网上下载，veewee�
 [vagrantwithveewee]: http://www.ducea.com/2011/08/15/building-vagrant-boxes-with-veewee/
 [veeweetemplates]: https://github.com/jedi4ever/veewee/tree/master/templates
 [larryweibo]: http://weibo.com/larrycai
+[vagrant-jenkins]: http://www.continuousdelivery.info/index.php/2011/10/27/vagrant_jenkins_vm/
