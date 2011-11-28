@@ -4,20 +4,20 @@ layout: nil
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>Lukas Rieder</title>
-    <link>http://overbryd.github.com</link>
+    <title>Larry Cai</title>
+    <link>http://larrycai.github.com/blog</link>
     <language>en</language>
-    <webMaster>l.rieder@gmail.com (Lukas Rieder)</webMaster>
+    <webMaster>larry.caiyu@gmail.com (Larry Cai)</webMaster>
     <pubDate>{{ site.time | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
     <copyright>Copyright 2009</copyright>
     <ttl>60</ttl>
-    <description>Personal Blog of Lukas Rieder</description>
+    <description>Personal Blog of Larry Cai</description>
     {% for post in site.posts limit:10 %}
     <item>
       <title>{{ post.title | xml_escape }}</title>
-      <link>http://overbryd.github.com{{ post.url }}</link>
+      <link>http://larrycai.github.com/blog{{ post.url }}</link>
       <pubDate>{{ post.date | date: "%a, %d %b %Y %H:%M:%S %Z" }}</pubDate>
-      <guid>http://overbryd.github.com/archives{{ post.id }}/</guid>
+      <guid>http://larrycai.github.com/blog/archives{{ post.id }}/</guid>
       <description>{{ post.content | xml_escape }}</description>
     </item>
     {% endfor %}
