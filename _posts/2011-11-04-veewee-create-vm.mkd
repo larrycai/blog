@@ -113,7 +113,7 @@ iso文件就是操作系统的安装光盘，建议先从网上下载，veewee�
 4. VirtualBox API - VBoxManage: https://www.virtualbox.org/manual/ch08.html
 5. 持续交付：http://www.continuousdelivery.info/
 
-[img-veewee]: /blog/imgages/veewee.png?raw=true
+[img-veewee]: /blog/images/veewee.png
 [vagrant]: http://vagrantup.com/
 [puppet]: http://puppetlabs.com/
 [veewee]: http://github.com/jedi4ever/veewee

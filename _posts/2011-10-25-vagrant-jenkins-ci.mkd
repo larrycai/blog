@@ -81,10 +81,10 @@ jenkins 是一个最常用的持续集成服务器，可单独运行或者放在
 2. stackoverflow的问题讨论：[How to combine Vagrant with Jenkins for the perfect Continuous Integration Environment?][sof-6941547]
 
 
-[img-vmm]: /blog/imgages/vmm.png?raw=true
-[img-jenkins-node]: /blog/imgages/jenkins-node.png?raw=true
-[img-jenkins-job1]: /blog/imgages/jenkins-job1.png?raw=true
-[img-jenkins-job2]: /blog/imgages/jenkins-job2.png?raw=true
+[img-vmm]: /blog/images/vmm.png
+[img-jenkins-node]: /blog/images/jenkins-node.png
+[img-jenkins-job1]: /blog/images/jenkins-job1.png
+[img-jenkins-job2]: /blog/images/jenkins-job2.png
 [sof-6941547]: http://stackoverflow.com/questions/6941547
 [vagrant]: http://vagrantup.com/
 [vagrantblog]: http://blog.crowdint.com/2011/06/21/vagrant.html
