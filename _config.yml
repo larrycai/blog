@@ -1,0 +1,7 @@
+auto: true
+server: true
+server_port: 4000
+source: .
+destination: ./_site
+pygments: true
+lsi: true

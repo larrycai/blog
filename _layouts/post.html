@@ -1,0 +1,33 @@
+---
+layout: default
+---
+
+<div class="post">
+  <h1>{{ page.title }}</h1>
+  {{ content }}
+  <hr/>
+  <a name="add_your_opinion">&nbsp;</a>
+  <div id="disqus_thread">
+    
+  </div>
+  <script type="text/javascript" src="http://disqus.com/forums/lukasrieder/embed.js"></script>
+  <noscript><a href="http://lukasrieder.disqus.com/?url=ref">View the discussion thread.</a></noscript>
+</div>
+<div class="date sidebox">
+  <span class="title">{{ page.date | date: "%b %Y" }}</span>
+  <span class="day">{{ page.date | date: "%d" }}</span>
+</div>
+<div class="share sidebox">
+  <span class="title">Share</span>
+  <a href="http://www.addthis.com/bookmark.php?v=250"
+    class="addthis_button">
+    <img src="http://s7.addthis.com/static/btn/sm-plus.gif" 
+      align="middle"
+      width="16" height="16" border="0" alt="Share" />
+  </a>
+</div>
+<div id="opinions_sidebox" class="opinions sidebox">
+  <span class="title">Opinions</span>
+  <span class="count">0</span>
+  <a href="#add_your_opinion">add yours</a>
+</div>

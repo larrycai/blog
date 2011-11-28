@@ -1,0 +1,47 @@
+---
+layout: post
+title: The world would be a better place if...
+---
+
+!>{border:2px solid firebrick}/content_images/marriage.jpg!
+
+... "Ballpark":http://ballparkapp.com would marry "mite":http://mite.yo.lk. These two fabulous web apps would get along perfectly!
+
+I don't want to ask too much, and I know the feature I'm requesting may fall out of the 80 % category of what the majority wants. But please, dear Ballpark team, consider it. __Maybe in a stand up meeting right now!__
+
+I think this is actually a business opportunity on both sides.
+There would be more potentially interested clients. (Don't ask me numbers, I don't run these apps – ask "@mite":http://twitter.com/mite or "@metalab":http://twitter.com/metalab.)
+
+For more information about each app, here are the links to their tours:
+
+-> "”Fast input, powerful output: mite lets you track your time in a structured way. Advanced reporting helps you and your team to stay on top of your daily business.”":http://mite.yo.lk/en/tour.html
+
+-> "”Using Ballpark is going to be your daily bottom of the ninth, full count, walk-off home run moment of invoice zen.”":http://getballpark.com
+
+h2. Managing both without pain
+
+It is a lot of work to write invoices or estimates. I do this by hand for about a year now. But the more I think about the process, the more I get the feeling it can be done with less effort.
+At the end of each month, I sit down and get this quirky process started:
+
+1. Download the reports for every project of the last month from mite as a PDF.
+2. Get the total and write it in the blank with Pages
+3. Get the full address of the client and fill it in the blank
+4. Save the edited blank as the new invoice
+5. Launch Adobe Acrobat
+6. Combine those PDFs into one.
+7. Send the combined PDF per E-Mail to the client with a few nice words.
+
+h3. This scenario could be cut down:
+
+1. Create a new invoice for the client on my ballpark account.
+2. Select the client's project with all time entries from last month.
+3. Add a few nice words and send the invoice to the client via ballpark.
+
+h2. The design outline
+
+!/content_images/mite_and_ballpark_in_love.png!
+
+h2. References for development
+
+* "mite. API documentation":http://mite.yo.lk/en/api/
+* "mite-rb ruby API implementation":http://github.com/yolk/mite-rb

@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf8" />
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/960gs.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/syntax.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/default.css" />
+    {{ if page.robots }}<meta name="robots" content="{{ page.robots }}" />{{ endif }}
+  </head>
+  <body id="body">
+    <div id="header">
+      <div class="centered">
+        <div id="myhead"></div>
+        <a href="http://github.com/Overbryd" target="_blank" id="forkme">Fork me on Github</a>
+        <div id="birdy">
+          <a href="http://twitter.com/Overbryd" id="followme">Follow me on Twitter</a>
+        </div>
+      </div>
+      <div class="inner-shadow"></div>
+    </div>
+    <div id="background" class="centered clearfix">
+      
+      <div class="container_12 centered clearfix">
+        <div id="content" class="grid_9 clearfix">
+          <div class="top bg"></div>
+          <div class="middle bg clearfix">
+            <div class="inner">{{ content }}</div>
+          </div>
+          <div class="bottom bg"></div>
+        </div>
+      
+        <div id="sidebar" class="grid_3">
+          <div class="inner">
+            <div id="aboutme" class="clearfix">
+              <div id="coffeemug"></div>
+              <a href="http://feeds.feedburner.com/LukasRieder?format=xml" id="feedme">Feed me</a>
+              <p class="small">
+                <img id="gravatar" src="http://gravatar.com/avatar/171de85d4d79cb7afe725174fb099137.jpg" width="40px" height="40px" alt="My Gravatar" align="middle"/>
+                Hy, my name is Lukas Rieder.
+                You can <a href="/contact.html">contact me here</a>.
+                Comments are welcome.
+              </p>
+              <ul class="vertical navigation">
+                <li><a href="/">Home</a></li>
+                <li><a href="/archives.html">Archive</a></li>
+                <li><a href="/imprint.html">Imprint / Credits</a></li>
+              </ul>
+            </div>
+            <div id="manifesto">
+              <h3>Manifesto</h3>
+              <p>I've become a freelancer, because I like to monetize the things I love to do. Freelancing gives me enough responsibility to feel passionate about what I'm doing.
+              </p><p>
+              Human beeings are not made to follow strict day to day routines. Humans don't fit into robot stuff. Their just too weak, too sloppy or too sleepy to do repetive work.
+              For this reason I seek for diversity in what I'm doing.
+              </p><p>
+              I like people who think forward. I feel comfortable in a sort of positive, future like mindset. Not the predictive stuff. That's odd. Much more the "Hey, I like to make my own way" or "I've never heard of 'Gorilla-Sandboarding-Break-A-Leg' but I'll give it a try".
+              </p><p>
+              We will probably never get along if you can't find your own motivation not to sleep all day.
+              </p><p>
+              Work is something that has to be done. Quality and Performance are indicators I'm definitely aware of. But let us talk about the different ways to achieve these goals. I'll listen to your way if you consider mine.
+              </p><p>
+              Solar panels should be everywhere.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+          
+    </div>
+    <script type="text/javascript" src="/javascripts/jquery-1.3.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/application.js"></script>
+    <script type="text/javascript">
+      var addthis_config = {
+        username: 'Overbryd',
+        services_compact: 'email, facebook, twitter, more',
+        services_exclude: 'print'
+      }
+      $(function() {
+        // DriveBy Animation of the twitter follow button and the github profile button
+        $('#followme').driveBy({
+          mouseenter: {
+            'opacity': 100
+          },
+          radius: 250
+        }).css('opacity', 0);
+        $('#forkme').driveBy({
+          mouseenter: {
+            'opacity': 100
+          }
+        }).css('opacity', 0);
+        
+        // Manifesto Animation
+        $('#manifesto :children').hover(
+          function(){
+            $(this).stop();
+            $(this).animate({fontSize:'1em', opacity:1}, 'normal');
+          },
+          function(){
+            $(this).stop();
+            $(this).animate({fontSize:'0.75em', opacity:0.75}, 'normal');
+          }
+        );
+        
+        // Count the disqus conversations for each post
+        update_comments_count = function(){
+          counter = $('#dsq-num-posts');
+          if(counter && parseInt(counter.text()) > 0){
+            $('#opinions_sidebox .count').text(counter.text());
+          }else{
+            $('#opinions_sidebox .count').text('0');
+          }
+        }
+        setInterval('update_comments_count()', 5000);
+        
+      });
+      
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+      try {
+        var pageTracker = _gat._getTracker("UA-2373458-13");
+        pageTracker._trackPageview();
+      } catch(err) {}
+    </script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js"></script>
+  </body>
+</html>
