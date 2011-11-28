@@ -7,7 +7,7 @@ robots: "noindex, follow"
   <h1>Archive</h1>
   <ul class="post_list">
     {% for post in site.posts %}
-      <li><span class="date">{{ post.date | date: "%d %b %Y" }}</span><a href="/blog/{{ post.url }}">{{ post.title }}</a>
+      <li><span class="date">{{ post.date | date: "%d %b %Y" }}</span><a href="/blog{{ post.url }}">{{ post.title }}</a>
     {% endfor %}
   </ul>
 </div>
