@@ -95,3 +95,5 @@ jenkins 是一个最常用的持续集成服务器，可单独运行或者放在
 [vagrantblog]: http://blog.crowdint.com/2011/06/21/vagrant.html
 [puppet]: http://puppetlabs.com/
 [veewee]: http://github.com/jedi4ever/veewee
+[larryweibo]: http://weibo.com/larrycai
+
