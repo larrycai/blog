@@ -1,6 +1,6 @@
 ---
-layout:post
-title:使用vagrant+jenkins来管理虚拟机的技巧
+layout: post
+title: 使用vagrant+jenkins来管理虚拟机的技巧
 ---
 #{{ page.title }}
 #简介#

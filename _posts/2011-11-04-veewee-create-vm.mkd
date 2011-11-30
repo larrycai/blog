@@ -1,6 +1,6 @@
 ---
-layout:post
-title:用veewee创建vagrant的虚拟机
+layout: post
+title: 用veewee创建vagrant的虚拟机
 ---
 #{{ page.title }}
 #简介#
