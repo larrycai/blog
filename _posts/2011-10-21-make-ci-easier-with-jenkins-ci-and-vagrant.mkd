@@ -1,7 +1,6 @@
 ---
 layout: post
 title: make ci easier with jenkins CI and Vagrant
-category: technical
 tags: [Continuous Delivery, jenkins, vagrant, virtualbox]
 ---
 
