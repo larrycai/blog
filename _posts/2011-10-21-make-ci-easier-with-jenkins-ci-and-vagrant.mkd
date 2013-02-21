@@ -1,0 +1,64 @@
+---
+layout: post
+title: make ci easier with jenkins CI and Vagrant
+category: technical
+tags: [Continuous Delivery, jenkins, vagrant, virtualbox]
+---
+
+## Background ##
+
+Last time, I mentioned the nice tool for vagrant which can control virtualbox virtual machines easily, at once I start to think how it can be used in CI system easily.
+
+Also I noticed the question @ stackoverflow <http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173>, and my suggestion is below
+
+### Separate virtual machines environment ###
+Why Mostly your jenkins server is used for lots of tasks, therefore it is run mostly by restricted user, for example it is tomcat6 if running as servlet, or normal jenkins user, and mostly they don’t have shell access to avoid problem.
+
+Vagrant may needs lots of 3pps which may different with normal jenkins user.
+
+Therefore it is better to separate the virtual machine environment
+
+### Jenkins master/slave mode ###
+
+This is the nice solution to solve this problem to isolate the environment, just new another node in your jenkins server (which is master) as below
+
+![](http://codeslife.mkbok.com/images/ci-vagrant-1.png)
+
+It is communicated by ssh, and it will invoke the slave.jar automatically. And here I created the vagrant user for this, why ?
+
+### Reuse the ssh public/private key ###
+If you played with vagrant, you know vagrant can access virtual machine via ssh without password, it because it uses the ssh public/private key.
+
+Therefore I created the vagrant user and put the private/public key into `~vagrant/.ssh` directory, mostly they are under `/var/lib/gems/1.8/gems/vagrant-0.8.7/keys/`, which is used by vagrant, if you don’t know where it is, please type `vagrant ssh_config`
+
+![](http://codeslife.mkbok.com/images/ci-vagrant-2.png)
+
+Prepare the base box under vagrant user
+Follow the normal vagrant guideline, and create one vm box, for example, I put it under `~/vm/ubuntu`
+
+New the CI job to control VM
+Now it is time to configure a job to experience this, in jenkins master node, create a job in freestyle
+
+![](http://codeslife.mkbok.com/images/ci-vagrant-3.png)
+
+Label Expression is the category we defined in slave node.
+
+In the task (Build – Execute shell), jenkins slave try to go to that directory and start vagrant, then doing some simple tasks to evaulate whether it is done in our vm box.
+
+![](http://codeslife.mkbok.com/images/ci-vagrant-4.png)
+
+**!! REMEBER, this is done in slave mode using vagrant user !!**
+
+Now you can see the job is invoked in slave vagrant node
+
+![](http://codeslife.mkbok.com/images/ci-vagrant-5.png)
+
+In the console output, you can notice the result
+
+![](http://codeslife.mkbok.com/images/ci-vagrant-6.png)
+ 
+## Summary ##
+
+Using Vagrant in jenkins master/slave mode is perfect match for this job, you can get lots of flexibility using virtualmachine. 
+veewee is another layer above vagrant to control vm box more easily.
+
