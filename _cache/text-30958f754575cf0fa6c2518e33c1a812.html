@@ -1,0 +1,15 @@
+<div class="highlight"><pre><code class="text">before_script:
+  - sudo apt-get install pandoc
+  - sudo apt-get install ttf-arphic-gbsn00lp ttf-arphic-ukai ttf-wqy-microhei ttf-wqy-zenhei
+  - sudo apt-get install texlive-xetex texlive-latex-recommended texlive-latex-extra
+  - gem install mkbok
+
+rvm:
+  - 1.9.3
+  - 1.8.7
+script: mkbok --lang zh --build pdf
+
+after_script: 
+    - which curl ; curl -v --upload-file sdcamp.zh.pdf http://blobs.ge.tt/3iBcNNC/sdcamp.zh.pdf?sig=-TY5O1GAx8xHwWiCqd8aySlQiroFAnHK2o4
+</code></pre>
+</div>

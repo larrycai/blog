@@ -1,0 +1,17 @@
+<div class="highlight"><pre><code class="text">rdccaiy@ubuntu:~/veewee$ vagrant basebox build ubuntu1104
+
+Verifying the isofile ubuntu-11.04-server-i386.iso is ok.
+We found no good state so we are destroying the previous machine+disks
+VBoxManage unregistervm  &#39;ubuntu1104&#39; --delete
+Deleting vm ubuntu1104
+Deleting disk /home/rdccaiy/VirtualBox VMs/ubuntu1104/ubuntu1104.vdi
+VBoxManage closemedium disk &#39;/home/rdccaiy/VirtualBox VMs/ubuntu1104/ubuntu1104.vdi&#39; --delete
+Creating vm ubuntu1104 : 384M - 1 CPU - Ubuntu
+Creating new harddrive of size 10140
+VBoxManage createhd --filename &#39;/home/rdccaiy/VirtualBox VMs/ubuntu1104/ubuntu1104.vdi&#39; --size &#39;10140&#39; --format vdi &gt; /dev/null
+Attaching disk: /home/rdccaiy/VirtualBox VMs/ubuntu1104/ubuntu1104.vdi
+Mounting cdrom: /home/rdccaiy/veewee/iso/ubuntu-11.04-server-i386.iso
+Waiting for the machine to boot
+....
+</code></pre>
+</div>
