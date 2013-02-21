@@ -1,0 +1,46 @@
+---
+layout: post
+title: svn – git integration
+tags: [git, svn]
+---
+
+## Background 
+
+My coming Git study need to check how to use git with svn, since we have svn repository already, and we don’t want to switch to git completely, it will be nice to introduce git with less impact to current svn’s way of working, if the git pilot is good, we will phase out the svn repository completely (or just backup)
+
+Thanks to git, it provides excellent git-svn integration, at least from the guideline. (I need to practice in later), now I just list some alternative I current think of it.
+
+### git-svn: no git main repository
+
+[![image](http://larrycai.files.wordpress.com/2013/02/image_thumb.png?w=436&#038;h=225 "image")](http://larrycai.files.wordpress.com/2013/02/image.png)&#160;
+
+The user (like Larry, Peter) can directly use git command to fetch/rebase code base from svn repository and sync back using git dcommit command.    
+
+**Pros**: no git main server need to maintain, it save the efforts on this area.     
+**Cons**: less experience on git development, less features are used from git, it is not the step to phase of svn
+
+### git-svn: git-svn sync automatically
+
+[![image](http://larrycai.files.wordpress.com/2013/02/image_thumb1.png?w=441&#038;h=239 "image")](http://larrycai.files.wordpress.com/2013/02/image1.png) 
+
+The git main repository is created, it will sync with svn repo automatically using hook or cron job. And git user and svn user are seperated complete, git user (larry) use git natively, he shall not be aware of the sync between svn/git.
+
+Pros: git user can fully benefit from git main repository to gain more experience on git    
+Cons: setup extra server (gitolite like), sync between svn/git may be tricky
+
+### git-svn: git-svn sync manually by user
+
+[![image](http://larrycai.files.wordpress.com/2013/02/image_thumb2.png?w=446&#038;h=244 "image")](http://larrycai.files.wordpress.com/2013/02/image2.png) 
+
+It is quite similar to previous case, just let one git user (larry or Peter) to sync with svn server manually, it can help during pilot phase to fix sync problems quickly, it can be switched to solution two when it is smoothly
+
+Pros (compare to solution 2): solve sync problem quickly    
+Cons: need manual work, rely on git user
+
+## Summary
+
+This is quick thought from high level, and I recommend to use solution 3 (sync manually) in beginning, when it is smooth, switch to solution 2.
+
+BTW: If you happy to like my sketech, let you know, I use my favorite balsamiq tool [http://www.balsamiq.com/](http://www.balsamiq.com/ "http://www.balsamiq.com/")
+
+
