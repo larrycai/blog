@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+
+<html>
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>LarryCai - make ci easier with jenkins CI and Vagrant</title>
+    <link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8"/>
+    <link rel="stylesheet" href="/stylesheets/syntax.css" type="text/css" media="screen" charset="utf-8"/>
+    <script src="/javascripts/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/javascripts/jquery.github.js" type="text/javascript" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id='wrapper'>
+      <div id='header'>
+        <h1><a href='/'>LarryCai</a></h1>
+        
+        <div id='menu'>
+          <ul>
+            <li><a href='/blog.html' id='blog_link' title='Blog'>Blog</a></li>
+            <li><a href='/about.html' id='about_link' title='About'>About</a></li>
+            <li><a href='http://github.com/codeslife' target='_blank' title='GitHub' rel='me' id='github_link'>GitHub</a></li>
+            <li><a href='http://cn.linkedin.com/in/larrycaiyu' title='LinkedIn' target='_blank' rel='me' id='linkedin_link'>LinkedIn</a></li>
+            <li><a href='http://weibo.com/larrycaiyu' title='Weibo' target='_blank' rel='me' id='weibo_link'>Weibo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div id='content'>
+        <div class='post'>
+  <span class='date'>21 Oct 2011</span>
+  <h1><a href='/2011/10/21/make-ci-easier-with-jenkins-ci-and-vagrant/'>make ci easier with jenkins CI and Vagrant</a></h1>
+  <div class='body'><h2>Background</h2>
+
+<p>Last time, I mentioned the nice tool for vagrant which can control virtualbox virtual machines easily, at once I start to think how it can be used in CI system easily.</p>
+
+<p>Also I noticed the question @ stackoverflow http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173, and my suggestion is below</p>
+
+<h3>Separate virtual machines environment</h3>
+
+<p>Why Mostly your jenkins server is used for lots of tasks, therefore it is run mostly by restricted user, for example it is tomcat6 if running as servlet, or normal jenkins user, and mostly they don’t have shell access to avoid problem.</p>
+
+<p>Vagrant may needs lots of 3pps which may different with normal jenkins user.</p>
+
+<p>Therefore it is better to separate the virtual machine environment</p>
+
+<h3>Jenkins master/slave mode</h3>
+
+<p>This is the nice solution to solve this problem to isolate the environment, just new another node in your jenkins server (which is master) as below</p>
+
+<p><img src="../images/ci-vagrant-1.png" alt="" /></p>
+
+<p>It is communicated by ssh, and it will invoke the slave.jar automatically. And here I created the vagrant user for this, why ?</p>
+
+<h3>Reuse the ssh public/private key</h3>
+
+<p>If you played with vagrant, you know vagrant can access virtual machine via ssh without password, it because it uses the ssh public/private key.</p>
+
+<p>Therefore I created the vagrant user and put the private/public key into <code>~vagrant/.ssh</code> directory, mostly they are under <code>/var/lib/gems/1.8/gems/vagrant-0.8.7/keys/</code>, which is used by vagrant, if you don’t know where it is, please type <code>vagrant ssh_config</code></p>
+
+<p><img src="../images/ci-vagrant-2.png" alt="" /></p>
+
+<p>Prepare the base box under vagrant user
+Follow the normal vagrant guideline, and create one vm box, for example, I put it under <code>~/vm/ubuntu</code></p>
+
+<p>New the CI job to control VM
+Now it is time to configure a job to experience this, in jenkins master node, create a job in freestyle</p>
+
+<p><img src="../images/ci-vagrant-3.png" alt="" /></p>
+
+<p>Label Expression is the category we defined in slave node.</p>
+
+<p>In the task (Build – Execute shell), jenkins slave try to go to that directory and start vagrant, then doing some simple tasks to evaulate whether it is done in our vm box.</p>
+
+<p><img src="../images/ci-vagrant-4.png" alt="" /></p>
+
+<p><strong>!! REMEBER, this is done in slave mode using vagrant user !!</strong></p>
+
+<p>Now you can see the job is invoked in slave vagrant node</p>
+
+<p><img src="../images/ci-vagrant-5.png" alt="" /></p>
+
+<p>In the console output, you can notice the result</p>
+
+<p><img src="../images/ci-vagrant-6.png" alt="" /></p>
+
+<h2>Summary</h2>
+
+<p>Using Vagrant in jenkins master/slave mode is perfect match for this job, you can get lots of flexibility using virtualmachine.
+veewee is another layer above vagrant to control vm box more easily.</p>
+</div>
+</div>
+
+<div class="related">
+  <h3>Related Posts</h3>
+  <table class="post-list">
+    
+  </table>
+</div>
+
+<script type="text/javascript" charset="utf-8">
+  var disqus_url = "http://codeslife.github.com//2011/10/21/make-ci-easier-with-jenkins-ci-and-vagrant/";
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'larrycaiyu'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+        <div class='clearfix'></div>
+      </div>
+    </div>
+    <div id='footer'>
+      Copyright &copy; 2011 LarryCai. Hosted by <a href='http://github.com/codeslife/codeslife.github.com/' target='_blank'>GitHub</a> and powered by <a href='http://github.com/mojombo/jekyll'>Jekyll</a>, and reuse the template from <a href='http://github.com/mbleigh/mbleigh.github.com/'>Michael Bleigh</a>.
+    </div>
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'larrycaiyu'; // required: replace example with your forum shortname
+    
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+  </body>
+</html>

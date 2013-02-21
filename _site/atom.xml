@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>LarryCai</title>
+ <link href="http://codeslife.github.com/atom.xml" rel="self"/>
+ <link href="http://codeslife.github.com"/>
+ <updated>2012-08-24T14:54:51+08:00</updated>
+ <id>codeslife.github.com</id>
+ <author>
+   <name>LarryCai</name>
+   <email>larry.caiyu@gmail.com
+</email>
+ </author>
+ 
+ 
+ <entry>
+   <title>make ci easier with jenkins CI and Vagrant</title>
+   <link href="http://codeslife.github.com/2011/10/21/make-ci-easier-with-jenkins-ci-and-vagrant/"/>
+   <updated>2011-10-21T00:00:00+08:00</updated>
+   <id>http://codeslife.github.com/2011/10/21/make-ci-easier-with-jenkins-ci-and-vagrant</id>
+   <content type="html">&lt;h2&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;Last time, I mentioned the nice tool for vagrant which can control virtualbox virtual machines easily, at once I start to think how it can be used in CI system easily.&lt;/p&gt;
+
+&lt;p&gt;Also I noticed the question @ stackoverflow http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173, and my suggestion is below&lt;/p&gt;
+
+&lt;h3&gt;Separate virtual machines environment&lt;/h3&gt;
+
+&lt;p&gt;Why Mostly your jenkins server is used for lots of tasks, therefore it is run mostly by restricted user, for example it is tomcat6 if running as servlet, or normal jenkins user, and mostly they don’t have shell access to avoid problem.&lt;/p&gt;
+
+&lt;p&gt;Vagrant may needs lots of 3pps which may different with normal jenkins user.&lt;/p&gt;
+
+&lt;p&gt;Therefore it is better to separate the virtual machine environment&lt;/p&gt;
+
+&lt;h3&gt;Jenkins master/slave mode&lt;/h3&gt;
+
+&lt;p&gt;This is the nice solution to solve this problem to isolate the environment, just new another node in your jenkins server (which is master) as below&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;It is communicated by ssh, and it will invoke the slave.jar automatically. And here I created the vagrant user for this, why ?&lt;/p&gt;
+
+&lt;h3&gt;Reuse the ssh public/private key&lt;/h3&gt;
+
+&lt;p&gt;If you played with vagrant, you know vagrant can access virtual machine via ssh without password, it because it uses the ssh public/private key.&lt;/p&gt;
+
+&lt;p&gt;Therefore I created the vagrant user and put the private/public key into &lt;code&gt;~vagrant/.ssh&lt;/code&gt; directory, mostly they are under &lt;code&gt;/var/lib/gems/1.8/gems/vagrant-0.8.7/keys/&lt;/code&gt;, which is used by vagrant, if you don’t know where it is, please type &lt;code&gt;vagrant ssh_config&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Prepare the base box under vagrant user
+Follow the normal vagrant guideline, and create one vm box, for example, I put it under &lt;code&gt;~/vm/ubuntu&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;New the CI job to control VM
+Now it is time to configure a job to experience this, in jenkins master node, create a job in freestyle&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Label Expression is the category we defined in slave node.&lt;/p&gt;
+
+&lt;p&gt;In the task (Build – Execute shell), jenkins slave try to go to that directory and start vagrant, then doing some simple tasks to evaulate whether it is done in our vm box.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;!! REMEBER, this is done in slave mode using vagrant user !!&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Now you can see the job is invoked in slave vagrant node&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the console output, you can notice the result&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Using Vagrant in jenkins master/slave mode is perfect match for this job, you can get lots of flexibility using virtualmachine.
+veewee is another layer above vagrant to control vm box more easily.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>
