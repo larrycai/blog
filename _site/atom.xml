@@ -4,7 +4,7 @@
  <title>LarryCai</title>
  <link href="http://codeslife.github.com/atom.xml" rel="self"/>
  <link href="http://codeslife.github.com"/>
- <updated>2012-08-24T14:54:51+08:00</updated>
+ <updated>2013-02-21T09:24:39+08:00</updated>
  <id>codeslife.github.com</id>
  <author>
    <name>LarryCai</name>
@@ -22,7 +22,7 @@
 
 &lt;p&gt;Last time, I mentioned the nice tool for vagrant which can control virtualbox virtual machines easily, at once I start to think how it can be used in CI system easily.&lt;/p&gt;
 
-&lt;p&gt;Also I noticed the question @ stackoverflow http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173, and my suggestion is below&lt;/p&gt;
+&lt;p&gt;Also I noticed the question @ stackoverflow &lt;a href=&quot;http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173&quot;&gt;http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173&lt;/a&gt;, and my suggestion is below&lt;/p&gt;
 
 &lt;h3&gt;Separate virtual machines environment&lt;/h3&gt;
 
@@ -36,7 +36,7 @@
 
 &lt;p&gt;This is the nice solution to solve this problem to isolate the environment, just new another node in your jenkins server (which is master) as below&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://codeslife.mkbok.com/images/ci-vagrant-1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;It is communicated by ssh, and it will invoke the slave.jar automatically. And here I created the vagrant user for this, why ?&lt;/p&gt;
 
@@ -46,7 +46,7 @@
 
 &lt;p&gt;Therefore I created the vagrant user and put the private/public key into &lt;code&gt;~vagrant/.ssh&lt;/code&gt; directory, mostly they are under &lt;code&gt;/var/lib/gems/1.8/gems/vagrant-0.8.7/keys/&lt;/code&gt;, which is used by vagrant, if you don’t know where it is, please type &lt;code&gt;vagrant ssh_config&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://codeslife.mkbok.com/images/ci-vagrant-2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Prepare the base box under vagrant user
 Follow the normal vagrant guideline, and create one vm box, for example, I put it under &lt;code&gt;~/vm/ubuntu&lt;/code&gt;&lt;/p&gt;
@@ -54,23 +54,23 @@ Follow the normal vagrant guideline, and create one vm box, for example, I put i
 &lt;p&gt;New the CI job to control VM
 Now it is time to configure a job to experience this, in jenkins master node, create a job in freestyle&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://codeslife.mkbok.com/images/ci-vagrant-3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Label Expression is the category we defined in slave node.&lt;/p&gt;
 
 &lt;p&gt;In the task (Build – Execute shell), jenkins slave try to go to that directory and start vagrant, then doing some simple tasks to evaulate whether it is done in our vm box.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://codeslife.mkbok.com/images/ci-vagrant-4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;!! REMEBER, this is done in slave mode using vagrant user !!&lt;/strong&gt;&lt;/p&gt;
 
 &lt;p&gt;Now you can see the job is invoked in slave vagrant node&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://codeslife.mkbok.com/images/ci-vagrant-5.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;In the console output, you can notice the result&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;../images/ci-vagrant-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://codeslife.mkbok.com/images/ci-vagrant-6.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
 &lt;h2&gt;Summary&lt;/h2&gt;
 

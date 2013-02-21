@@ -33,7 +33,7 @@
 
 <p>Last time, I mentioned the nice tool for vagrant which can control virtualbox virtual machines easily, at once I start to think how it can be used in CI system easily.</p>
 
-<p>Also I noticed the question @ stackoverflow http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173, and my suggestion is below</p>
+<p>Also I noticed the question @ stackoverflow <a href="http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173">http://stackoverflow.com/questions/6941547/how-to-combine-vagrant-with-jenkins-for-the-perfect-continuous-integration-envir/7830173#7830173</a>, and my suggestion is below</p>
 
 <h3>Separate virtual machines environment</h3>
 
@@ -47,7 +47,7 @@
 
 <p>This is the nice solution to solve this problem to isolate the environment, just new another node in your jenkins server (which is master) as below</p>
 
-<p><img src="../images/ci-vagrant-1.png" alt="" /></p>
+<p><img src="http://codeslife.mkbok.com/images/ci-vagrant-1.png" alt="" /></p>
 
 <p>It is communicated by ssh, and it will invoke the slave.jar automatically. And here I created the vagrant user for this, why ?</p>
 
@@ -57,7 +57,7 @@
 
 <p>Therefore I created the vagrant user and put the private/public key into <code>~vagrant/.ssh</code> directory, mostly they are under <code>/var/lib/gems/1.8/gems/vagrant-0.8.7/keys/</code>, which is used by vagrant, if you don’t know where it is, please type <code>vagrant ssh_config</code></p>
 
-<p><img src="../images/ci-vagrant-2.png" alt="" /></p>
+<p><img src="http://codeslife.mkbok.com/images/ci-vagrant-2.png" alt="" /></p>
 
 <p>Prepare the base box under vagrant user
 Follow the normal vagrant guideline, and create one vm box, for example, I put it under <code>~/vm/ubuntu</code></p>
@@ -65,23 +65,23 @@ Follow the normal vagrant guideline, and create one vm box, for example, I put i
 <p>New the CI job to control VM
 Now it is time to configure a job to experience this, in jenkins master node, create a job in freestyle</p>
 
-<p><img src="../images/ci-vagrant-3.png" alt="" /></p>
+<p><img src="http://codeslife.mkbok.com/images/ci-vagrant-3.png" alt="" /></p>
 
 <p>Label Expression is the category we defined in slave node.</p>
 
 <p>In the task (Build – Execute shell), jenkins slave try to go to that directory and start vagrant, then doing some simple tasks to evaulate whether it is done in our vm box.</p>
 
-<p><img src="../images/ci-vagrant-4.png" alt="" /></p>
+<p><img src="http://codeslife.mkbok.com/images/ci-vagrant-4.png" alt="" /></p>
 
 <p><strong>!! REMEBER, this is done in slave mode using vagrant user !!</strong></p>
 
 <p>Now you can see the job is invoked in slave vagrant node</p>
 
-<p><img src="../images/ci-vagrant-5.png" alt="" /></p>
+<p><img src="http://codeslife.mkbok.com/images/ci-vagrant-5.png" alt="" /></p>
 
 <p>In the console output, you can notice the result</p>
 
-<p><img src="../images/ci-vagrant-6.png" alt="" /></p>
+<p><img src="http://codeslife.mkbok.com/images/ci-vagrant-6.png" alt="" /></p>
 
 <h2>Summary</h2>
 
@@ -105,7 +105,7 @@ veewee is another layer above vagrant to control vm box more easily.</p>
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
-    var disqus_shortname = 'larrycaiyu'; // required: replace example with your forum shortname
+    var disqus_shortname = 'codeslifelarry'; // required: replace example with your forum shortname
 
     /* * * DON'T EDIT BELOW THIS LINE * * */
     (function() {
