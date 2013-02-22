@@ -1,0 +1,57 @@
+---
+layout: post
+title: Associate CI build information in redmine issue by using redmine REST API
+tags: [jenkins, jenkins-plugin, maven, redmine]
+---
+
+## Introduction
+
+Last time, I mentioned that there is a nice feature in [JIRA plugin](http://wiki.jenkins-ci.org/display/JENKINS/Jira+plugin), which can associate the build information back to issue management system, and I spend one day for redmine to show how it could work, I really enjoy the coding work, here is the detail what I have done so far
+
+There are several major technical issues to solve
+
+1.  Update redmine issues with Redmine interface when I got build information in jenkins2.  Improve redmine plugin to add more configuration and embed one job in post-build3.  combile 1+2, when build is finished, I need to trigger the update to redmine
+
+## Redmine REST API
+
+The good thing for most of nice web application is it provides good API, redmine is no exception, it has [REST interface](http://www.redmine.org/projects/redmine/wiki/Rest_api) , before you use it, need some setting in your redmine system.
+
+Enable the REST Web service and later you can find the key to access, and key is much better (cool) than normal user/password
+
+[![image](http://larrycai.files.wordpress.com/2013/02/image_thumb8.png?w=174&#038;h=212 "image")](http://larrycai.files.wordpress.com/2013/02/image8.png) [![image](http://larrycai.files.wordpress.com/2013/02/image3_thumb.png?w=171&#038;h=210 "image")](http://larrycai.files.wordpress.com/2013/02/image31.png)
+
+Since it uses REST API, it is much easier for developer to contribute the native library, here is the [Rest API with Java](http://www.redmine.org/projects/redmine/wiki/Rest_api_with_java) which works toward redmine 1.1.0+, and it is very easy to get it started according to the example.
+
+### Where to put the build information in issue
+
+I notce there is no field to attach the build information, so I raise the [feature request #7692](http://www.redmine.org/issues/7692) into redmine forum, hopefully they can fix it, currently I can append the build information into “Description” area
+
+[![image](http://larrycai.files.wordpress.com/2013/02/image_thumb9.png?w=338&#038;h=61 "image")](http://larrycai.files.wordpress.com/2013/02/image9.png) 
+
+## Add configuration in redmine plugin
+
+Now comes to the jenkins put, follow the old way to add one field to put the Redmine REST Access key.
+
+[![image](http://larrycai.files.wordpress.com/2013/02/image6_thumb.png?w=382&#038;h=76 "image")](http://larrycai.files.wordpress.com/2013/02/image61.png)
+
+And also I need to put one checkbox for whether push the build information back to redmine. (follow the JIRA plugin’s statement ![;-)](https://s1.wp.com/wp-includes/images/smilies/icon_wink.gif) , and learn a little about how to add it in this section, by [http://blog.sacaluta.com/2009/04/hudson-plugin-2-adding-post-build.html](http://blog.sacaluta.com/2009/04/hudson-plugin-2-adding-post-build.html), and now it looks below
+
+&#160;[![image](http://larrycai.files.wordpress.com/2013/02/image9_thumb.png?w=382&#038;h=132 "image")](http://larrycai.files.wordpress.com/2013/02/image91.png) 
+
+## Maven support for redmine java API
+
+It is time to combine them together, unfortunately the redmine java API doesn’t have maven support yet, see the [task 2 in the google code](http://code.google.com/p/redmine-java-api/issues/detail?id=2) and I need to figure it out by myself, not so difficult, but still cost me one hour at least
+
+1.  install the jar file locally (mvn install:install-file)2.  put it into one webserver (easily migrate it later)3.  add one proxy in nexus to check the jars under that web server4.  add other dependency into pom.xml
+
+Now it is possible to deal with redmine issue in jenkins, I hard code the issue id, and when the build is finished, it can push it to the description as I wanted, Great !!
+
+I can’t spend more time to make it work completely (find issue in the build’s change set), any volunteer ?
+
+## Summary
+
+When I am coding, i feel I have full of motivation and full of fun inside ![;-)](https://s1.wp.com/wp-includes/images/smilies/icon_wink.gif) , unfortunately it is very difficult for me to focus on this in my daily work, haha. 
+
+back to some learnings.
+
+*   redmine is a nice product on integration, which we can learn from technology as well like REST interface with key.*   there is some value to associate the build information with issue, it can improve the transability, hopefully I can find people or myself to finish it.

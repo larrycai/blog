@@ -1,0 +1,84 @@
+---
+layout: post
+title: create virtualbox on fly using veewee
+tags: [Continuous Delivery,vagrant,veewee,virtualbox]
+---
+
+## Introduction
+
+one headache of using vagrant is to have base box, and creating basebox from scratch is headache, and how to solve it ?
+
+You want to create by yourself for some framework, please wait for a minute, there already had one project [veewee](https://github.com/jedi4ever/veewee), and I don’t want to repeat the nice blog [http://www.ducea.com/2011/08/15/building-vagrant-boxes-with-veewee/](http://www.ducea.com/2011/08/15/building-vagrant-boxes-with-veewee/) as well.
+
+Below just some tips when I tried this morning
+
+## veewee tips
+
+### veewee directory structure
+
+I prefer to create one seperate `veewee` directory for this tasks.     
+iso files should be download in advance, and make a softlink under created directory iso.     
+then you can define your own basebox like below
+
+	~/veewee$ vagrant basebox define 'ubuntu1104' 'ubuntu-11.04-server-i386'
+
+the directory will looks like below, you type command under veewee directory
+
+	~/veewee$ find
+	.
+	./definitions
+	./definitions/myubuntubox
+	./definitions/myubuntubox/postinstall.sh
+	./definitions/myubuntubox/preseed.cfg
+	./definitions/myubuntubox/definition.rb
+	./definitions/ubuntu1104
+	./definitions/ubuntu1104/postinstall.sh
+	./definitions/ubuntu1104/preseed.cfg
+	./definitions/ubuntu1104/definition.rb
+	./iso
+	./iso/ubuntu-11.04-server-i386.iso</pre>
+
+### virtualbox headless
+
+suppose it should work headless (without GUI), while when I create basebox, it pops error on keyboard permisson, and when I enable my X11 display (since I tried it in my local linux server), it pops up virtualbox GUI and start to install.
+
+it is excellent feeling when you see it is under auto-installtion.
+
+### configure apt proxy
+
+since I try this in the company, I need to setup the proxy, it is fine to add the line `export http_proxy=http://proxy:8080` in the beginning of `postinstall.cfg`, and it works fine.
+
+## look inside of veewee
+
+the architecture of veewee looks great, it adds subcommand in vagrant, and all the majoy information are put into `definition.rb`
+
+	Veewee::Session.declare({
+	  :cpu_count => '1', :memory_size=> '384',
+	  :disk_size => '10140', :disk_format => 'VDI', :hostiocache => 'off',
+	   s_type_id => 'Ubuntu',
+	  :iso_file => "ubuntu-11.04-server-i386.iso",
+	  :iso_src => "http://releases.ubuntu.com/11.04/ubuntu-11.04-server-i386.iso",
+	  :iso_md5 => "ce1cee108de737d7492e37069eed538e",
+	  :iso_download_timeout => "1000",
+	  :boot_wait => "10", :boot_cmd_sequence => [
+	    '',
+	    '/install/vmlinuz noapic preseed/url=http://%IP%:%PORT%/preseed.cfg ',
+	    'debian-installer=en_US auto locale=en_US kbd-chooser/method=us ',
+	    'hostname=%NAME% ',
+	    'fb=false debconf/frontend=noninteractive ',
+	    'keyboard-configuration/layout=USA keyboard-configuration/variant=USA console-setup/ask_detect=false ',
+	    'initrd=/install/initrd.gz -- '
+	  ],
+	  :kickstart_port => "7122", :kickstart_timeout => "10000", :kickstart_file => "preseed.cfg",
+	  :ssh_login_timeout => "10000", :ssh_user => "vagrant", :ssh_password => "vagrant", :ssh_key => "",
+	  :ssh_host_port => "7222", :ssh_guest_port => "22",
+	  :sudo_cmd => "echo '%p'|sudo -S sh '%f'",
+	  :shutdown_cmd => "shutdown -P now",
+	  :postinstall_files => [ "postinstall.sh"], :postinstall_timeout => "10000"
+	})
+
+it will be used during boot time to trigger the auto-installation, different os will use own auto-installation method, `preseed.cfg` is used for ubuntu/debian, if for suse then kickstart is used. `postinstall.sh` is used when the os is installed and rebooted. 
+
+## Summary
+
+with those tool stacks (virtualbox,vagrant,puppet, veewee), your work makes more easily, don’t reinvent the wheel, don’t DIY. Use others brain.
