@@ -43,12 +43,14 @@ So I give a try with local setup
 
 Are jobs real splitted or misunderstand ?
 
+Shared in <a href="https://plus.google.com/100729724738053223351?rel=author">Google</a>
+
 ## Reference
 
 *   [K.K's Jenkins state of union 2013](http://www.slideshare.net/kohsuke/jenkins-state-of-union-2013)
 *   [Parallel Test Executor Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin)
 *   [Parallel Test Executor Plugin main function](https://github.com/jenkinsci/parallel-test-executor-plugin/blob/master/src/main/java/org/jenkinsci/plugins/parallel_test_executor/ParallelTestExecutor.java)
 
-	[img-parallel-job1]: http://larrycaiyu.com/blog/images/img-parallel-job1.png
+  [img-parallel-job1]: http://larrycaiyu.com/blog/images/img-parallel-job1.png
+  [img-parallel-job2]: http://larrycaiyu.com/blog/images/img-parallel-job2.png
 
-Shared in <a href="https://plus.google.com/100729724738053223351?rel=author">Google</a>
