@@ -102,6 +102,7 @@ There are small issues could be improved or learn how to solve
 
 * Why the excluding file list contains the prefix `.java` ?
 * How can `test_agent` get extra information from parent job like how many jobs are running ? Could be useful ?
+* Can we see the relation clearly for the jobs ?
 
 Shared in <a href="https://plus.google.com/100729724738053223351?rel=author">Google</a>
 
@@ -113,4 +114,5 @@ Shared in <a href="https://plus.google.com/100729724738053223351?rel=author">Goo
 
   [img-parallel-job1]: http://larrycaiyu.com/blog/images/img-parallel-job1.png
   [img-parallel-job2]: http://larrycaiyu.com/blog/images/img-parallel-job2.png
-
+  [img-parallel-job3]: http://larrycaiyu.com/blog/images/img-parallel-job3.png
+  [img-parallel-job4]: http://larrycaiyu.com/blog/images/img-parallel-job4.png
