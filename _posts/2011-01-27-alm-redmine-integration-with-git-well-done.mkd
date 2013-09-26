@@ -1,0 +1,47 @@
+---
+layout: post
+title: ALM – redmine integration with git, well done
+tags: [git, redmine]
+---
+
+As I said before, one thing I like redmine is good integration with git (svn as well), today I spend time to really look into it how it works.
+
+![](http://larrycaiyu.com/blog/images/alm-127-1.png)
+
+## Preparation
+
+ I setup the git respository using gitolite and configure it inside redmine, since current redmine doesn’t support external git server, you need to host the git repository locally, the good thing is git is DVCS, you could easily run cron job to sync the local git repository with others.
+
+![](http://larrycaiyu.com/blog/images/alm-127-2.png)
+
+After this, you can browse the code inside easily, probably you don’t need to use gitweb as well
+
+## Let connect issues with code revision 
+
+So how to connect issue with code revision, first simply commit the message with the issue number, to be frankly, I don’t want to read document, since this is most easy way for designers to do.
+
+![](http://larrycaiyu.com/blog/images/alm-127-3.png) ![](http://larrycaiyu.com/blog/images/alm-127-4.png)
+
+Great, it is connected to the issue directly and this hints and strike/grey line is the bonus, nice usability, and I figure it out without documentation.
+
+Then click the issues to see whether it can connected to the codes, Wooh nothing happen there, it looks like I need special configuration.
+
+Googled inside redmine forum, and I got the wiki page http://www.redmine.org/projects/redmine/wiki/RedmineSettings#Referencing-issues-in-commit-messages, I need to have specific keywords to trigger it, and redmine will scan the keywords to connect to the issues, surely it is also possible to configure to not use keyword, then all the related checkins will be grouped, the configuration looks like this
+
+![](http://larrycaiyu.com/blog/images/alm-127-5.png) 
+
+
+And this is the final result for my testing, see left, it is quite useful, you can trace the requirements to all related changes, (I am git expert, just curiously to see whether I can combine them into one commit after that), it will looks more clean.
+
+![](http://larrycaiyu.com/blog/images/alm-127-6.png)
+
+Anyway, excellent so far.
+
+## Summary
+
+This is the excellent integration example for issue management with VCS, it provides seamless integration with less efforts for developers since everything is done automatically, only need disciplined work for comments, which we should have.
+
+We also need to make it clean to set the issue into User story level, so it have some meanings later.
+
+It also brings us to think how/when to commit, combined merge could be useful in this case.
+
