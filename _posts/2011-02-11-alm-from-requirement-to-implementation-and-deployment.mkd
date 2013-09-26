@@ -1,0 +1,85 @@
+---
+layout: post
+title: ALM – From requirement to implementation and deployment
+tags: [jenkins, jenkins-plugin, maven, redmine]
+---
+
+Now I start to focus on CI (jenkins a.k.a. hudson) part to see how it can be, and I want to see what could happen after I commit the codes
+
+1. The issues can be automatically updated for the status and links 
+2. The product can be deployed to the live system automatically 
+3. In product live system, it can show the changes (have connection to issue management system) 
+4. .. testing part .. will be blogged later 
+
+![](http://larrycaiyu.com/blog/images/alm-211-1.png)
+
+And generally it is good.
+
+## General information
+
+### git and redmine integration to close issue automatically
+
+In redmine system, as PO, I register one use story issues 58, Hotkey in live system to visit build server, the status is new,  see below
+
+![](http://larrycaiyu.com/blog/images/alm-211-2.png)
+
+And as developer, I use maven to generate a sample web app and check in for first step, and add some javascript (see detail below) to trigger to visit build system
+
+After quick verification, I commit and push the code to git repository
+
+	~/demo/helloworld2$ git commit -am "closes #58, add support to link to lastest build in jenkins" 
+	~/demo/helloworld2$ git push
+
+Then I visit the redmine system, and the status is closed and set done to %100 automatically, well done 
+
+![](http://larrycaiyu.com/blog/images/alm-211-3.png)
+
+Why ? because in the redmine/git integration, it can scan the keyword and update the issue automatically
+
+![](http://larrycaiyu.com/blog/images/alm-211-4.png)
+ 
+Clean and easy to use.
+
+### deploy to live system automatically
+
+if you are familar with maven and jenkins, it should not be difficult, and it works great.
+
+I setup a tomcat server already, and open the admin interface, therefore in CI, it can trigger to deploy into tomcat automatically.
+
+![](http://larrycaiyu.com/blog/images/alm-211-5.png) 
+
+This part works good, surely in real live system, it will not be so simple, but it just needs improvement
+
+### connect to changes in live system
+
+In the live system, mostly we want to know what changes since last time, so we need to add link (to save time to find the link) in live web system, and also in order not to break the original view, I prefer to use keyboard shortcut to trigger.
+
+The changes information I use now for demo is in jenkins, see below
+
+![](http://larrycaiyu.com/blog/images/alm-211-6.png)
+  
+This part is not perfect, since I want to show changes on feature and bugs list which existing in redmine system, not it only shows the code changes, I need to dig into it to see why current redmine jenkins plugin is so weak, and I am not jenkins expert, I need time.
+
+[update] if i update the commit message with return key after issue number, it can link to redmine directly, great, see below, just can’t see detail issue information, it is pity
+
+![](http://larrycaiyu.com/blog/images/alm-211-7.png) 
+
+## Summary
+ALM tries to connect everything together easily, and I want to make most of steps automatically, good start, I will pursuade some project to use it to gain more experience
+
+## Technical Detail
+
+### Generate maven example
+it is simple, `mvn archetype:generate -DgroupId=com.example.demo -DartifactId=helloword2` and select web application example, then all the codes will be generated automatically
+
+### run web application locally in jetty
+Mostly we can use jetty to start local web container, please check http://maven.apache.org/plugins/maven-war-plugin/examples/rapid-testing-jetty6-plugin.html for more detail, since mostly the default port is already used by others, need configure it pom.xml
+
+### maven deployment in tomcat
+
+originally I try to setup jetty server for live system, after play a while, I notice jetty doesn’t have (at least 6.x) remote interface to be deploy/redeploy, so I have to switch to tomcat.
+
+Here is a good guideline to do this http://wiki.base22.com/display/btg/How+to+create+a+Maven+web+app+and+deploy+to+Tomcat+-+fast
+
+Why set the tomcat admin user/name in `~/.m2/settings.xml` instead of `pom.xml` due to security reason, since pom.xml will be visible to everyone.
+
