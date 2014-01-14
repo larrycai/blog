@@ -36,7 +36,7 @@ ignore_cache=IGNORE_CACHE_FLAG
 Based on the job configuration above, you just need to type command
 
 ```bash
-$ jenkins-jobs --config jenkins.ini update job-template.yaml 
+$ jenkins-jobs --conf jenkins.ini update job-template.yaml 
 ```
 
 Then your job `testjob` is created in your jenkins server.
