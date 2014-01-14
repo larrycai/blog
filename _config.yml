@@ -1,4 +1,4 @@
 pygments: true
 #markdown: rdiscount
-markdown: redcarpet2
+markdown: redcarpet
 permalink: ":year/:month/:day/:title"
