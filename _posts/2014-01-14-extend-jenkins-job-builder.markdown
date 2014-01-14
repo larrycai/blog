@@ -143,14 +143,16 @@ Now I need to download the existing jobs to see how XML looks like, using `curl`
 
 It belongs the section `publishers` So I write the `jenkins_buddy/modules/publishers.py` module to add one function `artifactdeployer`:
 
-	def artifactdeployer(parser, xml_parent, data):
-	    logger = logging.getLogger("%s:artifactdeployer" % __name__)
-	    artifactdeployer = XML.SubElement(xml_parent, 'org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerPublisher')
-	    entries = XML.SubElement(artifactdeployer, 'entries')
-	    entry = XML.SubElement(entries, 'org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerEntry')
-	    print data
-	    XML.SubElement(entry, 'includes').text = data['includes']
-	    XML.SubElement(entry, 'remote').text = data['remote']
+```python
+def artifactdeployer(parser, xml_parent, data):
+    logger = logging.getLogger("%s:artifactdeployer" % __name__)
+    artifactdeployer = XML.SubElement(xml_parent, 'org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerPublisher')
+    entries = XML.SubElement(artifactdeployer, 'entries')
+    entry = XML.SubElement(entries, 'org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerEntry')
+    print data
+    XML.SubElement(entry, 'includes').text = data['includes']
+    XML.SubElement(entry, 'remote').text = data['remote']
+```
 
 It is the core part handling convert.
 
