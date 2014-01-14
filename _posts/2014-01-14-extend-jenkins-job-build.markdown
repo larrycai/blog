@@ -186,18 +186,25 @@ Maybe you noticed, it is hack solution, since I skipped some parameter convertin
 
 [src/main/java/org/jenkinsci/plugins/artifactdeployer/ArtifactDeployerPublisher.java](https://github.com/jenkinsci/artifactdeployer-plugin/blob/master/src/main/java/org/jenkinsci/plugins/artifactdeployer/ArtifactDeployerPublisher.java) is the class we need to take care.
 
-    @DataBoundConstructor
-    public ArtifactDeployerPublisher(List<ArtifactDeployerEntry> deployedArtifact, boolean deployEvenBuildFail) {
-        this.entries = deployedArtifact;
-        this.deployEvenBuildFail = deployEvenBuildFail;
-        if (this.entries == null)
-            this.entries = Collections.emptyList();
-    }
+```java
+@DataBoundConstructor
+public ArtifactDeployerPublisher(List<ArtifactDeployerEntry> deployedArtifact, boolean deployEvenBuildFail) {
+    this.entries = deployedArtifact;
+    this.deployEvenBuildFail = deployEvenBuildFail;
+    if (this.entries == null)
+        this.entries = Collections.emptyList();
+}
+```
 
 It is directly mapping from XML into internal data, if you need know more, learn [how to develop jenkins plugin](https://wiki.jenkins-ci.org/display/JENKINS/Plugin+tutorial).
 
 Till now, you mostly understand all, don't forget to contribute back for your modules.
 
+## Reference ##
+
+* [Jenkins job builder in openstack][jjb], it has documentation as well
+* My sample [jenkins-buddy](https://github.com/larrycai/jenkins-buddy) in github
+* [ArtifactDeployer Plugin](https://wiki.jenkins-ci.org/display/JENKINS/ArtifactDeployer+Plugin) is the plugin we practiced to add extra support.
 
 [jjb]: http://ci.openstack.org/jenkins-job-builder/extending.html
 [img-artifactdeployer]: http://larrycaiyu.com/blog/images/artifactdeploy.png
