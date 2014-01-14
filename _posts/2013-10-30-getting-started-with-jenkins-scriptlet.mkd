@@ -1,0 +1,57 @@
+---
+layout: post
+title: Getting started with Jenkins scriptler
+---
+
+#Introduction#
+
+The slides based tutorial is available as [jenkins-scriptler in 90 minutes@slideshare](http://www.slideshare.net/larrycai/jenkins-scriptler-in-90mins)
+
+Don't remember from which version, Jenkins started to have a item "scriptler" under "Manage Jenkins", probably it comes with [Scriptler Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Scriptler+Plugin).
+
+![Jenkins Scriptler][img-jenkins-scriptler]
+
+From the wiki site, it states:
+
+	This plugin takes the idea of the script console one step further and allows you to ease your daily work with the Jenkins script console.
+
+	save/edit groovy scripts
+	select the node to execute the script on
+	download scripts from a shared catalog
+	scripts repo is exposed via git, push/pull scripts into scriptler
+
+Let's see how to create your own script for the daily tasks
+
+## Start from jenkins console ##
+
+You can find a Groovy script console in your Jenkins by clicking on “Manage Jenkins” and “Script console”. 
+
+Let's have a `hello world` script to check job name
+
+	println("hello world, groovy script")
+	j = Jenkins.instance.getItemByFullName('test-job')
+	println(j.name)
+
+This is Jenkins built-in scripting language, [Groovy](http://groovy.codehaus.org/). It can be of great help if you need to do something that is not provided by any setting or plugin and you do not feel you want to write a new plugin. 
+
+The Groovy script has access to all the internals of Jenkins, so there is a lot you can do with it, both good and bad…
+
+The internals of Jenkins are documented at <http://javadoc.jenkins-ci.org/.>
+
+Jenkins also has a Groovy plugin which adds a build step which can run a Groovy script. And there is also a Groovy post-build plugin, which allows you run a Groovy script after the build is done.
+
+# Go further #
+
+Nowadays, every thing will generate the community, scriptler has its own market as well
+
+ * scriplerweb <http://scriptlerweb.appspot.com/> 
+ * scripts in github <https://github.com/jenkinsci/jenkins-scripts/>
+
+Both can be imported into jenkins (remote script catalogs), and I think, mostly you will build your own scripts
+
+
+## Reference ##
+ * Git for Windows <http://msysgit.github.com/>
+ * Gerrit Code Review for Git <http://gerrit-documentation.googlecode.com/svn/Documentation/2.3/index.html>
+
+  [img-jenkins-scriptler]: https://wiki.jenkins-ci.org/download/attachments/46333975/screen-capture-1.gif?version=1&modificationDate=1279435458000
