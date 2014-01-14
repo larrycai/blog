@@ -7,31 +7,37 @@ title: Extend jenkins job builder
 
 [Jenkins job builder][jjb] is extreme good tool to manage your jenkins CI jobs, it takes simple description from YAML files, and use them to configure jenkins.
 
-	# set free style job
-	# job-template.yml
-	- job:
-	    name: testjob
-	    project-type: freestyle
-	    defaults: global
-	    disabled: false
-	    display-name: 'Fancy job name'
-	    concurrent: true
-	    quiet-period: 5
-	    workspace: /srv/build-area/job-name
-	    block-downstream: false
-	    block-upstream: false
+```yaml
+# set free style job
+# job-template.yml
+- job:
+    name: testjob
+    project-type: freestyle
+    defaults: global
+    disabled: false
+    display-name: 'Fancy job name'
+    concurrent: true
+    quiet-period: 5
+    workspace: /srv/build-area/job-name
+    block-downstream: false
+    block-upstream: false
+```
  
 Then put your jenkins access into `jenkins.ini` file   
 
-	[jenkins]
-	user=USERNAME
-	password=USER_TOKEN
-	url=JENKINS_URL
-	ignore_cache=IGNORE_CACHE_FLAG
+```ini
+[jenkins]
+user=USERNAME
+password=USER_TOKEN
+url=JENKINS_URL
+ignore_cache=IGNORE_CACHE_FLAG
+```
 
 Based on the job configuration above, you just need to type command
 
-	$ jenkins-jobs --config jenkins.ini update job-template.yaml 
+```bash
+$ jenkins-jobs --config jenkins.ini update job-template.yaml 
+```
 
 Then your job `testjob` is created in your jenkins server.
 
@@ -43,42 +49,49 @@ There is no magic behind it, `jenkins-jobs` just convert the `job-template.yaml`
 
 Try to do below to understand this.
 
-	$ jenkins-jobs test job-template.yaml -o .
+```bash
+$ jenkins-jobs test job-template.yaml -o .
+```
 
 Then xml file `testjob` is created, see
 
-	$ cat testjob
-	<?xml version="1.0" ?>
-	<project>
-	  <actions/>
-	  <description>
-	
-	&lt;!-- Managed by Jenkins Job Builder --&gt;</description>
-	  <keepDependencies>false</keepDependencies>
-	  <disabled>false</disabled>
-	  <displayName>Fancy job name</displayName>
-	  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
-	  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-	  <concurrentBuild>true</concurrentBuild>
-	  <customWorkspace>/srv/build-area/job-name</customWorkspace>
-	  <quietPeriod>5</quietPeriod>
-	  <canRoam>true</canRoam>
-	  <properties/>
-	  <scm class="hudson.scm.NullSCM"/>
-	  <builders/>
-	  <publishers/>
-	  <buildWrappers/>
-	</project>
+```xml
+<?xml version="1.0" ?>
+<project>
+  <actions/>
+  <description>
+
+&lt;!-- Managed by Jenkins Job Builder --&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <disabled>false</disabled>
+  <displayName>Fancy job name</displayName>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <concurrentBuild>true</concurrentBuild>
+  <customWorkspace>/srv/build-area/job-name</customWorkspace>
+  <quietPeriod>5</quietPeriod>
+  <canRoam>true</canRoam>
+  <properties/>
+  <scm class="hudson.scm.NullSCM"/>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+</project>
+```
 
 Now you can use `curl` command to send the request (`testjob`) directly !!
 
-	$ curl --user USER:PASS -H "Content-Type: text/xml" -s --data "@testjob" "http://jenkins-server/createItem?name=testjob"
+```bash
+$ curl --user USER:PASS -H "Content-Type: text/xml" -s --data "@testjob" "http://jenkins-server/createItem?name=testjob"
+```
 
 ### How to recreate your jenkins job ###
 
 Looks great, finally you need think about how to re-create your jenkins job, it is also simple, just download the `config.xml`
 
-	$ curl --user USER:PASS http://jenkins-server/testjob/config.xml
+```bash
+$ curl --user USER:PASS http://jenkins-server/testjob/config.xml
+```
 
 Or open the configuration page in broswer `http://jenkins-server/testjob/configure` and map from YAML file.
 
@@ -86,17 +99,21 @@ You need to read [jenkins job builder's guideline](http://ci.openstack.org/jenki
 
 What you stated in YAML file like
 	
-	-job:
-	  name: test_job	
-	  builders:
-	    - shell: "make test"
+```yaml
+-job:
+  name: test_job	
+  builders:
+    - shell: "make test"
+```
 
 it will be converted to
- 
-	<builders>
-		<hudson.tasks.Shell>
-		  <command>make test</command></hudson.tasks.Shell>
-	</builders>
+
+```xml 
+<builders>
+	<hudson.tasks.Shell>
+	  <command>make test</command></hudson.tasks.Shell>
+</builders>
+```
 
 ## How to extend ##
 
@@ -110,36 +127,42 @@ Then it is time to extend the module, the [existing document: Extending](http://
 
 And I want to have `.YAML` like below
 
-    # artifactdeploy.yaml
-	- job:
-	    name: test-job
-	    publishers:
-	      - artifactdeployer: 
-	          includes: 'buddy-*.tar.gz'
-	          remote: '/project/buddy'
+```yaml
+# artifactdeploy.yaml
+- job:
+    name: test-job
+    publishers:
+      - artifactdeployer: 
+          includes: 'buddy-*.tar.gz'
+          remote: '/project/buddy'
+```
 
 ### write codes to transform ###
 
 Now I need to download the existing jobs to see how XML looks like, using `curl` above, I got it like
 
-	<publishers>
-       ...	
-	  <org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerPublisher plugin="artifactdeployer@0.27">
-		<entries>
-		  <org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerEntry>
-		    <includes>buddy-*.tar.gz</includes>
-		    <basedir></basedir>
-		    <excludes></excludes>
-		    <remote>/project/buddy</remote>
-		    <flatten>false</flatten>
-		    <deleteRemote>false</deleteRemote>
-		    <deleteRemoteArtifacts>false</deleteRemoteArtifacts>
-		    <deleteRemoteArtifactsByScript>false</deleteRemoteArtifactsByScript>
-		    <failNoFilesDeploy>false</failNoFilesDeploy>
-		  </org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerEntry>
-		</entries>
-		<deployEvenBuildFail>false</deployEvenBuildFail>
-	  </org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerPublisher> 
+```xml
+<publishers>
+   ...	
+  <org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerPublisher plugin="artifactdeployer@0.27">
+	<entries>
+	  <org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerEntry>
+	    <includes>buddy-*.tar.gz</includes>
+	    <basedir></basedir>
+	    <excludes></excludes>
+	    <remote>/project/buddy</remote>
+	    <flatten>false</flatten>
+	    <deleteRemote>false</deleteRemote>
+	    <deleteRemoteArtifacts>false</deleteRemoteArtifacts>
+	    <deleteRemoteArtifactsByScript>false</deleteRemoteArtifactsByScript>
+	    <failNoFilesDeploy>false</failNoFilesDeploy>
+	  </org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerEntry>
+	</entries>
+	<deployEvenBuildFail>false</deployEvenBuildFail>
+  </org.jenkinsci.plugins.artifactdeployer.ArtifactDeployerPublisher>
+	..
+</publishers> 
+```
 
 It belongs the section `publishers` So I write the `jenkins_buddy/modules/publishers.py` module to add one function `artifactdeployer`:
 
@@ -162,25 +185,30 @@ Now you need hook this script into `jenkins-jobs builder`, thank for the [entry_
 
 Create the plugin related script and structure, add new `entry_point` in [setup.py](https://github.com/larrycai/jenkins-buddy/blob/master/setup.py)
 
-	# setup.py in jenkins-buddy
-	entry_points={
-	    'jenkins_jobs.publishers': [
-	        'artifactdeployer=jenkins_buddy.modules.publishers:artifactdeployer',
-	    ],
-	}
-
+```python
+# setup.py in jenkins-buddy
+entry_points={
+    'jenkins_jobs.publishers': [
+        'artifactdeployer=jenkins_buddy.modules.publishers:artifactdeployer',
+    ],
+}
+```
 it tells `jenkins-jobs` if you meet new keyword `artifactdeployer` in `publishers`, please let me `jenkins_buddy.modules.publishers:artifactdeployer` to handle.
 
 ### Verify it ###
 
 Build the pip package local and install it 
 
-	$ python setup.py sdist
-	$ pip install dist/jenkins-buddy-0.0.5.zip
+```bash
+$ python setup.py sdist
+$ pip install dist/jenkins-buddy-0.0.5.zip
+```
  
 And verify the new job, Bingo, it works.
 
-    $ jenkins-jobs test artifactdeploy.yaml -o . 
+```bash
+$ jenkins-jobs test artifactdeploy.yaml -o . 
+```
 
 ### Make it more complete by checking jenkins plugin java code ###
 
