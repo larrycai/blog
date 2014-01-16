@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Extend jenkins job builder
+categories: [jenkins, python, jenkins job builder]
 ---
 
 # What is jenkins job builder #
