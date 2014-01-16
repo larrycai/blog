@@ -7,6 +7,8 @@ categories: [hubot,coffeescript, nodejs,jenkinsapi,irc,jenkins]
 # What is Hubot ? #
 [hubot][Hubot] is your company's robot. this is the stated in the github's webpage. And it does. It is opensourced from github, which they used internally for ops.
 
+![hubot](https://github-images.s3.amazonaws.com/blog/2011/hubot.png)
+
 It is easy to setup for own hubot service inside the company, like what we did for jenkins server for CI, surely it is not limited to this, lots of plugins can be added, see more [Hubot Script Catalog][hubot_catalog], and you can create your own.
 
 [IRC](http://en.wikipedia.org/wiki/Internet_Relay_Chat) enables quick discussion and collaboration without breaking your workflow.
@@ -147,6 +149,7 @@ Better to fix the https in server side directly. ;-)
 
 # Reference #
 
+* Say hello to hubot: https://github.com/blog/968-say-hello-to-hubot
 * http://blog.mornati.net/2011/12/21/install-hubot-as-irc-channel-bot/ 
 * http://www.preshweb.co.uk/2011/10/why-irc-is-a-valuable-tool-to-your-development-team/
 * https://wiki.jenkins-ci.org/display/JENKINS/Authenticating+scripted+clients
