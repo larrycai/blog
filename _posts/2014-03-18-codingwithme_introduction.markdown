@@ -50,10 +50,17 @@ So running this inside community or company can get more recognition.
 
 60 minutes are too short to prepare environment and 3 exercise, 90 minutes is just ok
 
-And I used to have this workshop in the afternoon, it can be finished in 2 time slots: 13:00-14:30 and 14:30-16:00 
+And I used to have this workshop in the afternoon, it can be finished in 2 time slots: 13:00-14:30 and 14:30-16:00
 
-### How
+### How many people inside one CodingWithMe session ###
 
+6-10 is the right scale, since the teacher needs to take care the progress, too many people are not easily to be covered.
+
+Less than 6 people is little waste
+
+### What's the big difference compare to self-learning ###
+
+Some people learn it and forge the good exercises, just bring your laptop inside and learn on topic one month. 
 
 # Reference #
 
