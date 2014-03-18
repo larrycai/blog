@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Build the jenkins job and get notification in hubot
-categories: [hubot,coffeescript, nodejs,jenkinsapi,irc,jenkins]
+categories: [hubot,coffeescript, nodejs,irc,jenkins]
 ---
 
 # Build the job in Hubot #
