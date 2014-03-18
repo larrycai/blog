@@ -1,0 +1,34 @@
+---
+layout: post
+title: drone.io is nice
+categories: [drone,travis-ci,jenkins,continuous integration]
+---
+
+# Drone.io #
+
+![build badge](http://larrycaiyu.com/blog/images/drone-build-badge.png)
+
+Now in my github project, I add extra build status badge using drone.io.
+
+[drone.io](https://drone.io/) is another "Continuous Integration as-a-Service" like [travis-ci](http://travis-ci.org).
+
+There is official instruction in http://docs.drone.io/ 
+
+Try by learning, it is so easy to use, so this blog is just record more detail for my own experience and show the difference comparing to travis-ci.
+
+## Getting started with Drone.io ##
+
+Simple login using your existing github account and add new project by connecting to your opensource project.
+
+build console
+
+![building console](http://larrycaiyu.com/blog/images/drone-building-console.png)
+
+# Reference #
+
+* [Drone.io’s shift hints at the future of sending software to clouds](http://venturebeat.com/2014/02/07/droneio/)
+* [Drone and Docker, Open Source CI](http://blog.drone.io/2014/2/5/open-source-ci-docker.html)
+
+[hubot]: http://hubot.github.com/
+[hubot_catalog]: http://hubot-script-catalog.herokuapp.com/
+[jenkins_notify]: https://github.com/github/hubot-scripts/blob/master/src/scripts/jenkins-notifier.coffee
