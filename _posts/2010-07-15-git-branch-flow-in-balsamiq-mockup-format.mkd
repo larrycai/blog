@@ -1,0 +1,15 @@
+---
+layout: post
+title: git branch flow in balsamiq mockup format
+tags: [git, balsamiq, mockup]
+---
+
+## Introduction 
+If you are playing with git branch, then [A successful Git branching model](http://nvie.com/git-model) is must read, and the comments in his blog is also quite valuable, it saves me lots of time.
+
+Most people are inspired by his model picture, unfortunately it is written in keynotes (Mac OS), I can’t reuse it, since I am [balsamiq](http://www.balsamiq.com/) fans, I write it in 1 hour, see result 
+
+![](https://mockupstogo.mybalsamiq.com/mockups/4191.png)
+
+The source files are submit into github, and wait Vincent to approve and merge back to orig repo (http://github.com/nvie/gitflow), currently it locates under my forked repo. see http://github.com/larrycai/gitflow/blob/develop/contrib/gitflow.bmml
+
