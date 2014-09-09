@@ -11,5 +11,5 @@ Most people are inspired by his model picture, unfortunately it is written in ke
 
 ![](https://mockupstogo.mybalsamiq.com/mockups/4191.png)
 
-The source files are submit into github, and wait Vincent to approve and merge back to orig repo (http://github.com/nvie/gitflow), currently it locates under my forked repo. see http://github.com/larrycai/gitflow/blob/develop/contrib/gitflow.bmml
+The source files are submit into github, and wait Vincent to approve and merge back to orig repo (http://github.com/nvie/gitflow), currently it locates under my forked repo. see [source gitflow.bmml](http://github.com/larrycai/gitflow/blob/develop/contrib/gitflow.bmml)
 
