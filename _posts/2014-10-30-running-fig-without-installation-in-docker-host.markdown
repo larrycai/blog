@@ -5,9 +5,9 @@ title: running fig without installation in docker host
 
 ## What is Fig ?
 
-Fig (http://fig.sh) is a simple orchestration tool for managing multiple docker containers, now the company is acquired by docker.
+Fig [http://fig.sh](http://fig.sh) is a simple orchestration tool for managing multiple docker containers, now the company is acquired by docker.
 
-Simple you write configuration in `fig.yml` file (source from https://github.com/larrycai/codingwithme-ansible/blob/master/fig.yml) like
+Simple you write configuration in `fig.yml` file (source from [https://github.com/larrycai/codingwithme-ansible/blob/master/fig.yml](https://github.com/larrycai/codingwithme-ansible/blob/master/fig.yml) like
 
 	ansible:
 	  image: dockerfile/ansible
@@ -29,7 +29,7 @@ Simple you write configuration in `fig.yml` file (source from https://github.com
 
 Then execute `fig run ansible`, it will launch the docker container as you defined: sample above is to start 5 docker containers and enter into `ansible` container for testing.
 
-Learn fig more in http://blog.docker.com/2014/08/getting-started-with-orchestration-using-fig
+Learn fig more in [http://blog.docker.com/2014/08/getting-started-with-orchestration-using-fig](http://blog.docker.com/2014/08/getting-started-with-orchestration-using-fig)
 
 ## Problem for running environment
 
@@ -120,6 +120,6 @@ This is the only limitation for using fig docker container, I guess.
 ### Summary
 
 Now using fig docker image, you don’t need to install fig manually, this is 
-core value for docker. And it works in Windows/CoreOS as well.
+core value for docker. And it works in Windows (boot2docker 1.3+)/CoreOS as well.
 
 Enjoy
