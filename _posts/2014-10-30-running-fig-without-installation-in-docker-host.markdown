@@ -104,7 +104,7 @@ locally into `/home/docker` (see `fig.yml` sample above), then I can run
 Then it will start web stack containers (`haproxy`/`web`/`database`) at once ( 
 download needed docker image for first time) and run into `ansible` container
 
-`-v /var/run/docker.sock:/docker.sock` is used to pass the docker daemon socket into docker container so docker inside can community outside   
+`-v /var/run/docker.sock:/docker.sock` is used to pass the docker daemon socket into docker container so docker inside can communicate outside to control docker.  
 `-v /home/docker/codingwithme-ansible:/app` is to share the host folder inside.
 
 ### Remind
@@ -122,4 +122,4 @@ This is the only limitation for using fig docker container, I guess.
 Now using fig docker image, you don’t need to install fig manually, this is 
 core value for docker. And it works in Windows (boot2docker 1.3+)/CoreOS as well.
 
-Enjoy
+Enjoy.
