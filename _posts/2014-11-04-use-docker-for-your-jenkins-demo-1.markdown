@@ -137,6 +137,10 @@ The most easy way is to get the file from running jenkins directly (append `conf
 
 ![](http://larrycaiyu.com/blog/images/jenkins-demo1-8.png)
 
+And in the end, add small `start.sh` which will start your jenkins during startup.
+
+    exec java -jar /opt/jenkins/jenkins.war
+
 Then you can build your docker image
 
     docker build –t larrycai/jenkins-demo1 .
@@ -144,6 +148,8 @@ Then you can build your docker image
 ### How to share it public
 
 You can put your project into [github](http://github.com) or [bitbucket](http://bitbucket.com) and run your build in [http://hub.docker.com](http://hub.docker.com/) , then others can simple run docker command to run it (you can search for guideline)
+
+![](http://larrycaiyu.com/blog/images/jenkins-demo1-9.png)
 
 ## Summary
 
