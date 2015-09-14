@@ -23,7 +23,7 @@ Some of our products have different OS and different release, it demands several
 
 By using docker, we move our build service into docker image, And consolidate different build server into one powerful HW/VM machine, they can share the load. 
 
-![docker-3cases-build server](http://larrycaiyu.com/blog/images/docker-3cases-1.png)
+![docker-3cases-build server](http://www.larrycaiyu.com/blog/images/docker-3cases-1.png)
 
 Cost is not the big gain for those small machines, Instead, we make our build environment more professional
 
@@ -43,8 +43,8 @@ So I switch for most of development time using docker.
 
 Also I created several docker images to simulate the real VM node, and using [fig](fig.sh) to start those nodes in seconds. It can provide almost the same environment as openstack environment, and it is much much fast.
 
-![docker-3cases-fig](http://larrycaiyu.com/blog/images/docker-3cases-2.png)
-![docker-3cases-ansible](http://larrycaiyu.com/blog/images/docker-3cases-3.png)
+![docker-3cases-fig](http://www.larrycaiyu.com/blog/images/docker-3cases-2.png)
+![docker-3cases-ansible](http://www.larrycaiyu.com/blog/images/docker-3cases-3.png)
 
 I only use openstack when I have to deal with cloud VM and integration test in the end. I have to say I love it.
 
@@ -58,7 +58,7 @@ While testing is costly, several issues:
 2. competence is low due to less chance to practice, mostly they are developed and tested with experienced engineers only.
 3. since it is difficult to get environment ready, it causes the difference setup and view for designers and tester. 
 
-![docker-3cases-locally](http://larrycaiyu.com/blog/images/docker-3cases-4.png)
+![docker-3cases-locally](http://www.larrycaiyu.com/blog/images/docker-3cases-4.png)
 
 By using docker, we managed to establish those nodes in docker images. Inside, we provide testing environment (legacy, complex) as well, cool. Professional tester quickly like it.
 

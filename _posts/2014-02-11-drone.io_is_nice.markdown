@@ -6,7 +6,7 @@ categories: [drone,travis-ci,jenkins,continuous integration]
 
 # Drone.io #
 
-![build badge](http://larrycaiyu.com/blog/images/drone-build-badge.png)
+![build badge](http://www.larrycaiyu.com/blog/images/drone-build-badge.png)
 
 Now in my github project, I add extra build status badge using drone.io.
 
@@ -22,7 +22,7 @@ Simple login using your existing github account and add new project by connectin
 
 build console
 
-![building console](http://larrycaiyu.com/blog/images/drone-building-console.png)
+![building console](http://www.larrycaiyu.com/blog/images/drone-building-console.png)
 
 # Reference #
 

@@ -112,7 +112,7 @@ Shared in <a href="https://plus.google.com/100729724738053223351?rel=author">Goo
 *   [Parallel Test Executor Plugin](https://wiki.jenkins-ci.org/display/JENKINS/Parallel+Test+Executor+Plugin)
 *   [Parallel Test Executor Plugin main function](https://github.com/jenkinsci/parallel-test-executor-plugin/blob/master/src/main/java/org/jenkinsci/plugins/parallel_test_executor/ParallelTestExecutor.java)
 
-  [img-parallel-job1]: http://larrycaiyu.com/blog/images/img-parallel-job1.png
-  [img-parallel-job2]: http://larrycaiyu.com/blog/images/img-parallel-job2.png
-  [img-parallel-job3]: http://larrycaiyu.com/blog/images/img-parallel-job3.png
-  [img-parallel-job4]: http://larrycaiyu.com/blog/images/img-parallel-job4.png
+  [img-parallel-job1]: http://www.larrycaiyu.com/blog/images/img-parallel-job1.png
+  [img-parallel-job2]: http://www.larrycaiyu.com/blog/images/img-parallel-job2.png
+  [img-parallel-job3]: http://www.larrycaiyu.com/blog/images/img-parallel-job3.png
+  [img-parallel-job4]: http://www.larrycaiyu.com/blog/images/img-parallel-job4.png

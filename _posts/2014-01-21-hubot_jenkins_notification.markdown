@@ -6,7 +6,7 @@ categories: [hubot,coffeescript, nodejs,irc,jenkins]
 
 # Build the job in Hubot #
 
-In previous blog [ask hubot to deal with jenkins in IRC](http://larrycaiyu.com/blog/2014/01/14/extend-jenkins-job-builder/), I discussed about how to connect [Hubot][hubot] with Jenkins and IRC.
+In previous blog [ask hubot to deal with jenkins in IRC](http://www.larrycaiyu.com/blog/2014/01/14/extend-jenkins-job-builder/), I discussed about how to connect [Hubot][hubot] with Jenkins and IRC.
 
 One frequent command I used is to build the job
 
@@ -130,7 +130,7 @@ The code is not javascript style, need to be improved
 # Reference #
 
 * Say hello to hubot: https://github.com/blog/968-say-hello-to-hubot
-* http://larrycaiyu.com/blog/2014/01/14/extend-jenkins-job-builder
+* http://www.larrycaiyu.com/blog/2014/01/14/extend-jenkins-job-builder
 * http://stackoverflow.com/questions/18318485/hubots-github-pull-request-notifier-coffee/21206400
 * http://www.morethanseven.net/2012/01/06/Talking-to-jenkins-from-campfire-with-hubot/
 * send private message https://github.com/nandub/hubot-irc/issues/75

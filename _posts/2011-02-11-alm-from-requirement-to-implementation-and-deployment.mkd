@@ -11,7 +11,7 @@ Now I start to focus on CI (jenkins a.k.a. hudson) part to see how it can be, an
 3. In product live system, it can show the changes (have connection to issue management system) 
 4. .. testing part .. will be blogged later 
 
-![](http://larrycaiyu.com/blog/images/alm-211-1.png)
+![](http://www.larrycaiyu.com/blog/images/alm-211-1.png)
 
 And generally it is good.
 
@@ -21,7 +21,7 @@ And generally it is good.
 
 In redmine system, as PO, I register one use story issues 58, Hotkey in live system to visit build server, the status is new,  see below
 
-![](http://larrycaiyu.com/blog/images/alm-211-2.png)
+![](http://www.larrycaiyu.com/blog/images/alm-211-2.png)
 
 And as developer, I use maven to generate a sample web app and check in for first step, and add some javascript (see detail below) to trigger to visit build system
 
@@ -32,11 +32,11 @@ After quick verification, I commit and push the code to git repository
 
 Then I visit the redmine system, and the status is closed and set done to %100 automatically, well done 
 
-![](http://larrycaiyu.com/blog/images/alm-211-3.png)
+![](http://www.larrycaiyu.com/blog/images/alm-211-3.png)
 
 Why ? because in the redmine/git integration, it can scan the keyword and update the issue automatically
 
-![](http://larrycaiyu.com/blog/images/alm-211-4.png)
+![](http://www.larrycaiyu.com/blog/images/alm-211-4.png)
  
 Clean and easy to use.
 
@@ -46,7 +46,7 @@ if you are familar with maven and jenkins, it should not be difficult, and it wo
 
 I setup a tomcat server already, and open the admin interface, therefore in CI, it can trigger to deploy into tomcat automatically.
 
-![](http://larrycaiyu.com/blog/images/alm-211-5.png) 
+![](http://www.larrycaiyu.com/blog/images/alm-211-5.png) 
 
 This part works good, surely in real live system, it will not be so simple, but it just needs improvement
 
@@ -56,13 +56,13 @@ In the live system, mostly we want to know what changes since last time, so we n
 
 The changes information I use now for demo is in jenkins, see below
 
-![](http://larrycaiyu.com/blog/images/alm-211-6.png)
+![](http://www.larrycaiyu.com/blog/images/alm-211-6.png)
   
 This part is not perfect, since I want to show changes on feature and bugs list which existing in redmine system, not it only shows the code changes, I need to dig into it to see why current redmine jenkins plugin is so weak, and I am not jenkins expert, I need time.
 
 [update] if i update the commit message with return key after issue number, it can link to redmine directly, great, see below, just can’t see detail issue information, it is pity
 
-![](http://larrycaiyu.com/blog/images/alm-211-7.png) 
+![](http://www.larrycaiyu.com/blog/images/alm-211-7.png) 
 
 ## Summary
 ALM tries to connect everything together easily, and I want to make most of steps automatically, good start, I will pursuade some project to use it to gain more experience

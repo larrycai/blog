@@ -238,4 +238,4 @@ Till now, you mostly understand all, don't forget to contribute back for your mo
 * [ArtifactDeployer Plugin](https://wiki.jenkins-ci.org/display/JENKINS/ArtifactDeployer+Plugin) is the plugin we practiced to add extra support.
 
 [jjb]: http://ci.openstack.org/jenkins-job-builder/extending.html
-[img-artifactdeployer]: http://larrycaiyu.com/blog/images/artifactdeploy.png
+[img-artifactdeployer]: http://www.larrycaiyu.com/blog/images/artifactdeploy.png

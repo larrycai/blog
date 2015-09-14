@@ -18,7 +18,7 @@ The good thing for most of nice web application is it provides good API, redmine
 
 Enable the REST Web service and later you can find the key to access, and key is much better (cool) than normal user/password
 
-![](http://larrycaiyu.com/blog/images/redmine-1.png) ![](http://larrycaiyu.com/blog/images/redmine-2.png)
+![](http://www.larrycaiyu.com/blog/images/redmine-1.png) ![](http://www.larrycaiyu.com/blog/images/redmine-2.png)
 
 Since it uses REST API, it is much easier for developer to contribute the native library, here is the [Rest API with Java](http://www.redmine.org/projects/redmine/wiki/Rest_api_with_java) which works toward redmine 1.1.0+, and it is very easy to get it started according to the example.
 
@@ -26,17 +26,17 @@ Since it uses REST API, it is much easier for developer to contribute the native
 
 I notce there is no field to attach the build information, so I raise the [feature request #7692](http://www.redmine.org/issues/7692) into redmine forum, hopefully they can fix it, currently I can append the build information into “Description” area
 
-![](http://larrycaiyu.com/blog/images/redmine-3.png)
+![](http://www.larrycaiyu.com/blog/images/redmine-3.png)
 
 ## Add configuration in redmine plugin
 
 Now comes to the jenkins put, follow the old way to add one field to put the Redmine REST Access key.
 
-![](http://larrycaiyu.com/blog/images/redmine-4.png)
+![](http://www.larrycaiyu.com/blog/images/redmine-4.png)
 
 And also I need to put one checkbox for whether push the build information back to redmine. (follow the JIRA plugin’s statement ![;-)](https://s1.wp.com/wp-includes/images/smilies/icon_wink.gif) , and learn a little about how to add it in this section, by [http://blog.sacaluta.com/2009/04/hudson-plugin-2-adding-post-build.html](http://blog.sacaluta.com/2009/04/hudson-plugin-2-adding-post-build.html), and now it looks below
 
-![](http://larrycaiyu.com/blog/images/redmine-5.png)
+![](http://www.larrycaiyu.com/blog/images/redmine-5.png)
 
 ## Maven support for redmine java API
 
