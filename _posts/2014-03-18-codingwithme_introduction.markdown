@@ -10,7 +10,7 @@ categories: [codingwithme]
 
 Normally CodingWithMe runs several different sessions every month to let participants to choose, see the real poster below 
 
-![codingwithme](http://www.larrycaiyu.com/blog/images/codingwithme-3.png)
+![codingwithme](http://larrycai.github.io/blog/images/codingwithme-3.png)
 
 I initiated this in 2009 inside R&D department in the company, and so far it has 46 times, it is quite successful.
 
@@ -20,7 +20,7 @@ Each CodingWithMe session includes practical coding exercises (recommend to >50%
 
 Take a look at one example [Learn REST API with Python in 90 minutes][learnREST]
 
-![codingwithme](http://www.larrycaiyu.com/blog/images/codingwithme-1.png)
+![codingwithme](http://larrycai.github.io/blog/images/codingwithme-1.png)
 
 Typically the first exercise is "hello world" sample, it shall be able to executed in 10-20 minutes, less talking more coding. And everyone shall follow it.
 
@@ -30,7 +30,7 @@ Last exercise could be little challenge.
 
 As I stated above, mostly it is organized with several sessions to let developers to choose since different people had different flavors.
 
-![codingwithme](http://www.larrycaiyu.com/blog/images/codingwithme-2.png)
+![codingwithme](http://larrycai.github.io/blog/images/codingwithme-2.png)
  
 ## Benefit ##
 
