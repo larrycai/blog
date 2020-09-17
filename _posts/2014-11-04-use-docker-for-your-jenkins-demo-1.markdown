@@ -14,7 +14,7 @@ have a demo environment for them quickly.
 
 How this can be done easily? Docker is my favorite to achieve this.
 
-![](http://www.larrycaiyu.com/blog/images/jenkins-demo1-1.png)
+![](./images/jenkins-demo1-1.png)
 
 In this blog series, I use some examples to describe how to achieve this step 
 by step.
@@ -23,7 +23,7 @@ by step.
 
 [Jenkins AnsiColor plugin](https://wiki.jenkins-ci.org/display/JENKINS/AnsiColor+Plugin) is one of my favorite small plugin, it can turn console log looks better.
 
-![](http://www.larrycaiyu.com/blog/images/jenkins-demo1-2.png)
+![](./images/jenkins-demo1-2.png)
 
 So I want to setup a demo environment for everyone can try it locally without 
 installation, since mostly we want to try before deployment.
@@ -135,7 +135,7 @@ advance and put it under `$JENKINS_HOME/jobs/craft` in docker image.
 
 The most easy way is to get the file from running jenkins directly (append `config.xml` in your job URL) 
 
-![](http://www.larrycaiyu.com/blog/images/jenkins-demo1-8.png)
+![](./images/jenkins-demo1-8.png)
 
 And in the end, add small `start.sh` which will start your jenkins during startup.
 
@@ -149,7 +149,7 @@ Then you can build your docker image
 
 You can put your project into [github](http://github.com) or [bitbucket](http://bitbucket.com) and run your build in [http://hub.docker.com](http://hub.docker.com/) , then others can simple run docker command to run it (you can search for guideline)
 
-![](http://www.larrycaiyu.com/blog/images/jenkins-demo1-9.png)
+![](./images/jenkins-demo1-9.png)
 
 ## Summary
 
