@@ -3,3 +3,5 @@ pygments: true
 markdown: redcarpet
 highlighter: rouge
 permalink: ":year/:month/:day/:title"
+
+theme: jekyll-theme-modernist
