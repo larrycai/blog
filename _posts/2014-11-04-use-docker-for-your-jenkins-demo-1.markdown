@@ -23,7 +23,7 @@ by step.
 
 [Jenkins AnsiColor plugin](https://wiki.jenkins-ci.org/display/JENKINS/AnsiColor+Plugin) is one of my favorite small plugin, it can turn console log looks better.
 
-![](./images/jenkins-demo1-2.png)
+![](../images/jenkins-demo1-2.png)
 
 So I want to setup a demo environment for everyone can try it locally without 
 installation, since mostly we want to try before deployment.
@@ -34,11 +34,11 @@ Let’s see result first since you may just interesting this feature
 
     docker run –p 8080:8080 –t larrycai/jenkins-demo1
 
-![](http://www.larrycaiyu.com/blog/images/jenkins-demo1-3.png)
+![](../images/jenkins-demo1-3.png)
 
 The jenkins is started in console, then open the browser to access `8080` port.
 
-![](http://www.larrycaiyu.com/blog/images/jenkins-demo1-4.png)
+![](../images/jenkins-demo1-4.png)
 
 Looks great, one craft sample job is there and Jenkins is latest LTS version 
 1.580.1
@@ -46,11 +46,11 @@ Looks great, one craft sample job is there and Jenkins is latest LTS version
 Click `Craft` job and run it, then check the `console`, great, it shows the color 
 in console
 
-![](http://www.larrycaiyu.com/blog/images/jenkins-demo1-5.png)
+![](../images/jenkins-demo1-5.png)
 
 Then back to see how it is configured
 
-![](http://www.larrycaiyu.com/blog/images/jenkins-demo1-6.png)
+![](../images/jenkins-demo1-6.png)
 
 Now the demo is completed
 
@@ -98,7 +98,7 @@ Jenkins app (`.war`) can be found in [http://jenkins-ci.org/](http://jenkins-ci.
 
 All the plugins can be found in mirror sites: [http://mirrors.jenkins-ci.org/](http://mirrors.jenkins-ci.org/), you need to find the `Plugin Id` for your plugin like `ansicolor`, which can be mapped to [http://mirrors.jenkins-ci.org/plugins/ansicolor/latest/ansicolor.hpi](http://mirrors.jenkins-ci.org/plugins/ansicolor/latest/ansicolor.hpi)
 
-![](http://www.larrycaiyu.com/blog/images/jenkins-demo1-7.png)
+![](../images/jenkins-demo1-7.png)
 
 In jenkins, job’s configuration is saved as `config.xml`, you can prepare in 
 advance and put it under `$JENKINS_HOME/jobs/craft` in docker image.
@@ -135,7 +135,7 @@ advance and put it under `$JENKINS_HOME/jobs/craft` in docker image.
 
 The most easy way is to get the file from running jenkins directly (append `config.xml` in your job URL) 
 
-![](./images/jenkins-demo1-8.png)
+![](../images/jenkins-demo1-8.png)
 
 And in the end, add small `start.sh` which will start your jenkins during startup.
 
@@ -149,7 +149,7 @@ Then you can build your docker image
 
 You can put your project into [github](http://github.com) or [bitbucket](http://bitbucket.com) and run your build in [http://hub.docker.com](http://hub.docker.com/) , then others can simple run docker command to run it (you can search for guideline)
 
-![](./images/jenkins-demo1-9.png)
+![](../images/jenkins-demo1-9.png)
 
 ## Summary
 
